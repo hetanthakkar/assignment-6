@@ -15,7 +15,7 @@ public interface AccountModel {
    *
    * @param name Name of portfolio
    */
-  void setPortfolioName(String name);
+  void setPortfolioName(String name, String portfolioType);
 
   /**
    * Adds share to portfolio object.

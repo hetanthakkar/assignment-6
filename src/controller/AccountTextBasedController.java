@@ -63,7 +63,7 @@ public class AccountTextBasedController implements AccountController {
           String portfolioName = partOfInput[1];
           try {
             List<ParsedShares> listNewShares = this.parseCreatePortfolioAndShare();
-            model.setPortfolioName(portfolioName);
+            model.setPortfolioName(portfolioName,"flexible");
             for (ParsedShares i : listNewShares) {
               model.addShare(i.getTickerSymbol(), i.getQuantity());
             }
@@ -83,7 +83,7 @@ public class AccountTextBasedController implements AccountController {
           CsvProcessorInterface csvProcessor = new CsvProcessor(csvFileIO.getData());
           String portfolioName1 = csvProcessor.getPortfolioNameFromCsv();
           System.out.println(portfolioName1);
-          model.setPortfolioName(portfolioName1);
+          model.setPortfolioName(portfolioName1, "flexible");
           try {
             List<model.ParsedShares> listNewShares = csvProcessor.getSharesFromCsv();
             for (model.ParsedShares i : listNewShares) {

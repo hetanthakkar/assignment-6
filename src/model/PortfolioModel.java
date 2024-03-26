@@ -34,4 +34,6 @@ public interface PortfolioModel {
    * @throws Exception if there is an error while saving the portfolio.
    */
   String savePortfolio() throws Exception;
+
+  void accept(PortfolioVisitorModel visitor) throws Exception;
 }

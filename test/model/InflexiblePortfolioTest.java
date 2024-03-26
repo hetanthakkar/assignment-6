@@ -1,33 +1,35 @@
 package model;
 
-import model.ApiProcessor;
-import model.FetchApi;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+import model.FlexiblePortfolio.FlexiblePortfolioBuilder;
+
+import model.InflexiblePortfolio.InflexiblePortfolioBuilder;
+
 /**
  * PortfolioTest is a test class to test the Portfolio class functions.
  */
-public class PortfolioTest {
+public class InflexiblePortfolioTest {
 
   PortfolioModel testPortfolio;
 
   @Test(expected = Exception.class)
   public void invalidPortfolio() throws Exception {
-    testPortfolio = new Portfolio.PortfolioBuilder().build();
+    testPortfolio = new InflexiblePortfolioBuilder().build();
   }
 
   @Test(expected = Exception.class)
   public void invalidPortfolioNoShares() throws Exception {
-    testPortfolio = new Portfolio.PortfolioBuilder().createPortfolio("Hello").build();
+    testPortfolio = new InflexiblePortfolioBuilder().createPortfolio("Hello").build();
   }
 
   @Test
   public void createdValidPortfolio() throws Exception {
     String testShare1 = "AAPL";
     int quantity1 = 1;
-    testPortfolio = new Portfolio.PortfolioBuilder().createPortfolio("Hello")
+    testPortfolio = new InflexiblePortfolioBuilder().createPortfolio("Hello")
             .addShares(testShare1, quantity1).build();
     String completedMessage = "Done!";
     assertEquals("Done!", completedMessage);
@@ -39,7 +41,7 @@ public class PortfolioTest {
     String testShare1 = "AAPL";
     String testDate = "2024-03-12";
     int quantity1 = 1;
-    testPortfolio = new Portfolio.PortfolioBuilder()
+    testPortfolio = new InflexiblePortfolioBuilder()
             .createPortfolio(testPortfolioName).addShares(testShare1, quantity1).build();
 
     FetchApiInterface fetchApi = new FetchApi();
@@ -57,10 +59,33 @@ public class PortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
     int quantity1 = 1;
-    testPortfolio = new Portfolio.PortfolioBuilder()
+    testPortfolio = new InflexiblePortfolioBuilder()
             .createPortfolio(testPortfolioName).addShares(testShare1, quantity1).build();
     String expectedOutput = testPortfolioName + "\n |--- ( AAPL, 1) \n";
     assertEquals(expectedOutput, testPortfolio.getPortfolioComposition());
+  }
+
+  @Test (expected = Exception.class)
+  public void getAcceptBuy() throws Exception {
+    String testPortfolioName = "Hello";
+    String testShare1 = "AAPL";
+    int quantity1 = 1;
+    testPortfolio = new InflexiblePortfolioBuilder()
+            .createPortfolio(testPortfolioName).addShares(testShare1, quantity1).build();
+    PortfolioVisitorModel p1=new PortfolioBuyVisitor("AAPL", 5);
+    testPortfolio.accept(p1);
+  }
+
+  @Test //(expected = Exception.class)
+  public void getAcceptBuyFlexiblePortfolio() throws Exception {
+    String testPortfolioName = "Hello";
+    String testShare1 = "AAPL";
+    int quantity1 = 1;
+    testPortfolio = new FlexiblePortfolioBuilder()
+            .createPortfolio(testPortfolioName).addShares(testShare1, quantity1).build();
+    PortfolioVisitorModel p1=new PortfolioBuyVisitor("AAPL", 5);
+    testPortfolio.accept(p1);
+    System.out.println(testPortfolio.getPortfolioComposition());
   }
 
 }

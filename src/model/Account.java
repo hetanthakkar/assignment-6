@@ -23,8 +23,8 @@ public class Account implements AccountModel {
   }
 
   @Override
-  public void setPortfolioName(String name) {
-    this.accountBuild.createPortfolio(name);
+  public void setPortfolioName(String name, String portfolioType) {
+    this.accountBuild.createPortfolio(name, portfolioType);
   }
 
   @Override
@@ -92,7 +92,7 @@ public class Account implements AccountModel {
   static class AccountBuilder {
     private static final Account account = new Account();
     private String portfolioName;
-    private Portfolio.PortfolioBuilder portfolioBuild;
+    private PortfolioBuilder portfolioBuild;
 
     /**
      * Creates a new portfolio with the given name.
@@ -101,13 +101,19 @@ public class Account implements AccountModel {
      * @return The AccountBuilder object.
      * @throws IllegalArgumentException if the portfolio already exists.
      */
-    AccountBuilder createPortfolio(String portfolioName) {
+    AccountBuilder createPortfolio(String portfolioName, String portfolioType) {
+      // portfolio builder now abstract, define specific builder by taking in a new field specifying type
       if (account.accountPortfolios.containsKey(portfolioName)) {
         throw new IllegalArgumentException(String.format("%s is a portfolio that already" +
                 " exists.", portfolioName));
       }
       this.portfolioName = portfolioName;
-      this.portfolioBuild = new Portfolio.PortfolioBuilder().createPortfolio(portfolioName);
+//      if (portfolioType == "flexible"){
+//        this.portfolioBuild = new FlexiblePortfolioBuilder().createPortfolio(portfolioName);
+//      }
+//      else {
+        this.portfolioBuild = new InflexiblePortfolio.InflexiblePortfolioBuilder().createPortfolio(portfolioName);
+//      }
       return this;
     }
 

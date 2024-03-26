@@ -11,7 +11,7 @@ package model;
 
 class PurchaseShares extends Share {
 
-  private final int quantity;
+  private int quantity;
 
   /**
    * Constructs a new PurchaseShares object with the specified ticker symbol and
@@ -46,5 +46,10 @@ class PurchaseShares extends Share {
   @Override
   public double getValueAtDate(String date) throws Exception {
     return super.getValueAtDate(date) * this.quantity;
+  }
+
+  @Override
+  public void setQuantity(int newQuantity){
+    this.quantity = newQuantity;
   }
 }
