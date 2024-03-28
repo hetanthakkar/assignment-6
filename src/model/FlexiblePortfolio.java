@@ -131,9 +131,16 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
         this.shares.get(share).get(listIndexer).setQuantity(endQuantity);
         desiredSellQuantity = 0;
       }
+//      else if (this.shares.get(share).get(listIndexer).getQuantity() == desiredSellQuantity){
+//        desiredSellQuantity = 0;
+//        this.shares.get(share).remove(li
+//      }
       else {
         desiredSellQuantity = desiredSellQuantity - this.shares.get(share).get(listIndexer).getQuantity();
         this.shares.get(share).remove(listIndexer);
+        if (this.shares.get(share).isEmpty()){
+          this.shares.remove(share);
+        }
       }
     }
   }

@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Added Assignment4 code to Assignment5 project">
+      <change afterPath="$PROJECT_DIR$/test/model/AbstractPortfolioTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -32,12 +28,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "alexlee-23"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;alexlee-23&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -60,6 +56,8 @@
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.AccountModelTest.executor": "Run",
     "JUnit.AccountTextBasedControllerTest.executor": "Run",
+    "JUnit.FlexiblePortfolioTest.executor": "Run",
+    "JUnit.FlexiblePortfolioTest.getAcceptSell.executor": "Run",
     "JUnit.InflexiblePortfolioTest.executor": "Run",
     "JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor": "Run",
     "JUnit.ShareTest.executor": "Run",
@@ -69,7 +67,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "ShareRedesign",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,7 +78,51 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model" />
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="model" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration name="FlexiblePortfolioTest.getAcceptSell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.FlexiblePortfolioTest" />
+      <option name="METHOD_NAME" value="getAcceptSell" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlexiblePortfolioTest.getAcceptSellTickerNotHere" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.FlexiblePortfolioTest" />
+      <option name="METHOD_NAME" value="getAcceptSellTickerNotHere" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <extension name="coverage">
@@ -97,6 +141,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere" />
+        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSell" />
         <item itemvalue="JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" />
       </list>
     </recent_temporary>
@@ -120,6 +166,15 @@
       <workItem from="1711426764608" duration="6959000" />
       <workItem from="1711481303479" duration="4607000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed buy method, implemented cost-basis and value at date for portfolio">
+      <option name="closed" value="true" />
+      <created>1711584760740</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711584760741</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,20 +185,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="value" />
