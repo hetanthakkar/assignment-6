@@ -7,21 +7,23 @@ For generalized use cases, we recommend considering share prices after Jan 2000 
 
 ## Portfolio Operations
 
-To create 3 portfolios:
+To create portfolios:
 
-- create portfolio1 (MSFT-1) (AAPL-2) (GOOG-2)
-- create portfolio2 (GOOG-1) (AMZN-2)
-- create portfolio3 (GOOG-1)
+There are 3 ways to create portfolios. `create` and `create-inflexible` create inflexible portfolios (cannot be changed after creation).
+`create-flexible` will create a flexible portfolio, where it has buy and sell functionalities.
+- `create portfolio1 (MSFT-1) (AAPL-2) (GOOG-2)`
+- `create-inflexible portfolio2 (GOOG-1) (AMZN-2)`
+- `create-flexible portfolio3 (GOOG-1)`
 
-
-Other operations:
-
+Other Operations:
+- `help`: See quick manual for supported all commands in program
 - `list`: List all the portfolios.
-- `show portfolio1`: Display details of `portfolio1`.
-- `show portfolio2`: Display details of `portfolio2`.
-- `show portfolio3`: Display details of `portfolio3`.
+- `buy portfolio1 (AAPL-1)`: buying 1 share of AAPL for portfolio1 (only if portfolio1 is flexible)
+- `sell portfolio1 (AAPL-1)`: selling 1 share of AAPL for portfolio1 (only if portfolio1 is flexible)
+- `show portfolio1`: Display details of `portfolio1`, where `portfolio1` must already exist
 - `getvalue portfolio1 2024-03-14`: Get the total value of `portfolio1` on March 14, 2024.
-- `getvalue portfolio2 2024-03-14`: Get the total value of `portfolio2` on March 14, 2024.
-- `getvalue portfolio3 2024-03-14`: Get the total value of `portfolio3` on March 14, 2024.
+- `get-cost portfolio1 2024-03-14`: Get the total cost of `portfolio1` on March 14, 2024.
 - `save portfolio1`: Save `portfolio1`.
 - To load a portfolio: `load /Users/hetanthakkar/Assignment4/retirement/` if your portfolio name is `retirement.csv`.
+
+
