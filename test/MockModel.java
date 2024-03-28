@@ -58,4 +58,9 @@ public class MockModel implements AccountModel {
   public void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception {
 
   }
+
+  @Override
+  public String getCostBasis(String portfolioName, String date) throws Exception {
+    return null;
+  }
 }

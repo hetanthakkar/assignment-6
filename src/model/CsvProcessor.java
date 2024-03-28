@@ -31,13 +31,13 @@ public class CsvProcessor implements CsvProcessorInterface {
   }
 
   @Override
-  public CacheNode getData(String symbol) {
+  public CacheNodeInterface getData(String symbol) {
     String[] entry = validateSymbol(symbol);
     return entry != null ? new CacheNode(true, entry) : null;
   }
 
   @Override
-  public CacheNode getData(String symbol, String date) {
+  public CacheNodeInterface getData(String symbol, String date) {
     String[] entry = getEntry(symbol, date, true);
     if (entry == null) {
       entry = getEntry(symbol, date, false);

@@ -7,7 +7,6 @@ package model;
  * ticker symbol, and quantity,
  * offering a standardized way to work with share data within a portfolio.
  */
-
 public interface ShareModel {
 
   /**
@@ -56,5 +55,11 @@ public interface ShareModel {
    */
   int getQuantity();
 
+  /**
+   * Sets the quantity of shares.
+   *
+   * @param endQuantity The new quantity of shares.
+   */
   void setQuantity(int endQuantity);
 }
+

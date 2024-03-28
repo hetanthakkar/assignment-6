@@ -28,7 +28,7 @@ public interface CsvProcessorInterface {
    * @param symbol The symbol for which to retrieve data.
    * @return The retrieved data as a CacheNode.
    */
-  CacheNode getData(String symbol);
+  CacheNodeInterface getData(String symbol);
 
   /**
    * Retrieves data from the cache for a given symbol and date.
@@ -37,7 +37,7 @@ public interface CsvProcessorInterface {
    * @param date   The date for which to retrieve data.
    * @return The retrieved data as a CacheNode.
    */
-  CacheNode getData(String symbol, String date);
+  CacheNodeInterface getData(String symbol, String date);
 
   /**
    * Retrieves the name of the portfolio from the CSV data.

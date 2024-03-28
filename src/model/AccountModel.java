@@ -1,8 +1,7 @@
 package model;
 
 /**
- * An interface that defines the behavior of an account that holds multiple
- * portfolios.
+ * An interface that defines the behavior of an account that holds multiple portfolios.
  * It provides methods for managing portfolios, including adding shares,
  * retrieving composition,
  * and saving portfolios to a file. Implementing classes should provide concrete
@@ -13,7 +12,8 @@ public interface AccountModel {
   /**
    * Sets a name for a portfolio object.
    *
-   * @param name Name of portfolio
+   * @param name          Name of portfolio
+   * @param portfolioType Type of portfolio
    */
   void setPortfolioName(String name, String portfolioType);
 
@@ -67,9 +67,33 @@ public interface AccountModel {
    */
   String savePortfolio(String portfolioName) throws Exception;
 
+  /**
+   * Buys shares for a portfolio.
+   *
+   * @param portfolioName Name of portfolio
+   * @param tickerSymbol  Ticker symbol of stock
+   * @param quantity      Quantity of shares to buy
+   * @throws Exception when buying shares is not possible
+   */
   void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
 
+  /**
+   * Sells shares from a portfolio.
+   *
+   * @param portfolioName Name of portfolio
+   * @param tickerSymbol  Ticker symbol of stock
+   * @param quantity      Quantity of shares to sell
+   * @throws Exception when selling shares is not possible
+   */
   void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
 
+  /**
+   * Returns the cost basis of a portfolio on a given date.
+   *
+   * @param portfolioName Name of portfolio
+   * @param date          Desired date
+   * @return The cost basis of the portfolio on the given date
+   * @throws Exception when invalid portfolio or date is given
+   */
   String getCostBasis(String portfolioName, String date) throws Exception;
 }

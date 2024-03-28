@@ -5,7 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract class PortfolioBuilder {
+/**
+ * The PortfolioBuilder class represents a builder for constructing portfolios.
+ * It provides methods to create a portfolio, add shares to it, and build the portfolio.
+ * Concrete subclasses of PortfolioBuilder implement the build method to construct
+ * different types of portfolios.
+ */
+public abstract class PortfolioBuilder {
+
   protected String name;
   protected Map<String, List<ShareModel>> shares;
 
@@ -17,10 +24,10 @@ abstract class PortfolioBuilder {
    * @throws IllegalArgumentException if the portfolio name contains
    *                                  non-alphanumeric characters.
    */
-  PortfolioBuilder createPortfolio(String name) {
+  public PortfolioBuilder createPortfolio(String name) {
     if (!name.matches("[A-Za-z0-9]+")) {
-      throw new IllegalArgumentException("Portfolio" +
-              "name must only contain alphanumeric characters.");
+      throw new IllegalArgumentException("Portfolio name must " +
+              "only contain alphanumeric characters.");
     }
     this.name = name;
     this.shares = new HashMap<>();
@@ -35,7 +42,7 @@ abstract class PortfolioBuilder {
    * @return The PortfolioBuilder instance.
    * @throws Exception if an error occurs while adding shares.
    */
-  PortfolioBuilder addShares(String tickerSymbol, int quantity) throws Exception {
+  public PortfolioBuilder addShares(String tickerSymbol, int quantity) throws Exception {
     ShareModel newShare;
     try {
       newShare = new PurchaseShares(tickerSymbol, quantity);
@@ -60,5 +67,5 @@ abstract class PortfolioBuilder {
    * @throws Exception if the portfolio is empty.
    */
   abstract PortfolioModel build() throws Exception;
-
 }
+
