@@ -25,7 +25,7 @@ abstract class AbstractPortfolio implements  PortfolioModel {
   @Override
   public String getTotalValueAtCertainDate(String date) throws Exception {
     try {
-      return this.name + " Value: $" + this.getPortfolioValue(date);
+      return this.name + " Value: $" + getPortfolioValue(date);
     } catch (Exception e) {
       throw e;
     }
@@ -98,5 +98,25 @@ abstract class AbstractPortfolio implements  PortfolioModel {
     return "Successfully saved file in" + this.name + ".csv";
   }
 
+  @Override
   public abstract void accept(PortfolioVisitorModel visitor) throws Exception;
+
+  @Override
+  public String getCostBasis(String date){
+    try {
+      return this.name + " Cost-Basis: $" + getCostBasisValue();
+    } catch (Exception e) {
+      throw e;
+    }
+  }
+
+  protected double getCostBasisValue(){
+    double cost = 0;
+    for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
+      for (ShareModel groupOfSameShares : entry.getValue()) {
+          cost += groupOfSameShares.getCost();
+      }
+    }
+    return cost;
+  }
 }

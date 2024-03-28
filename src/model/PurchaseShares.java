@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 /**
  * The PurchaseShares class represents shares purchased by a user. It includes
  * information
@@ -12,6 +14,8 @@ package model;
 class PurchaseShares extends Share {
 
   private int quantity;
+
+  private String createdDate;
 
   /**
    * Constructs a new PurchaseShares object with the specified ticker symbol and
@@ -50,6 +54,11 @@ class PurchaseShares extends Share {
 
   @Override
   public void setQuantity(int newQuantity){
+    updateCostWhenSettingQuanitity(newQuantity);
     this.quantity = newQuantity;
+  }
+
+  private void updateCostWhenSettingQuanitity(int newQuantity){
+    this.cost = this.cost/this.quantity * newQuantity;
   }
 }

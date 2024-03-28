@@ -1,37 +1,54 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel{
 
+  private Map<String, Double> costBasisMap;
+
   FlexiblePortfolio(PortfolioBuilder portfolioBuilder){
     super(portfolioBuilder);
+    this.costBasisMap = new TreeMap<String, Double>();
+    this.updateCostMap();
   }
+
+
   @Override
   public void buyShare(String tickerSymbol, int quantity) throws Exception{
     ShareModel newShare;
-    try {
-      newShare = new PurchaseShares(tickerSymbol, quantity);
-    } catch (Exception e) {
-      throw e;
-    }
     if (this.shares.containsKey(tickerSymbol)) {
-      List<ShareModel> existingListShares = this.shares.get(tickerSymbol);
-      existingListShares.add(newShare);
+      newShare = this.returnShareWithSameDate(tickerSymbol, LocalDate.now().toString());
+      if (newShare == null) {
+        try {
+          newShare = new PurchaseShares(tickerSymbol, quantity);
+        } catch (Exception e) {
+          throw e;
+        }
+        this.shares.get(tickerSymbol).add(newShare);
+      } else {
+        newShare.setQuantity(quantity + newShare.getQuantity());
+      }
     } else {
+      try {
+        newShare = new PurchaseShares(tickerSymbol, quantity);
+      } catch (Exception e) {
+        throw e;
+      }
       List<ShareModel> listOfShares = new ArrayList<>();
       listOfShares.add(newShare);
       this.shares.put(tickerSymbol, listOfShares);
     }
+    this.updateCostMap();
   }
+
 
   @Override
   public void sellShare(String share, int quantity) throws Exception{
-    // first check if portfolio has share
-    // // if no, throw exception ("this share does not exist in portfolio")
     if (!this.shares.containsKey(share)){
       throw new Exception("Cannot sell stock that is not in the portfolio.");
     }
@@ -41,14 +58,26 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     else {
       this.removeSharesFromPortfolio(share, quantity);
     }
-    // // // if yes, then start selling from most past date --> write a function for this logic.
+    this.updateCostMap();
   }
 
+  @Override
+  public String getTotalValueAtCertainDate(String date) throws Exception {
+    try {
+      return this.name + " Value: $" + this.getPortfolioValue(date);
+    } catch (Exception e) {
+      throw e;
+    }
+  }
 
-  //create helper methods to help with sell method
-  // yes // private method to find total quantity of a share, to make sure there are enough to fulfill a sell order
-  // yes // private method to check if portfolio has a specific share to make sure it can sell
-  // // private method to get the Purchase Share of the most past date, so that it can start selling from there
+  @Override
+  public String getCostBasis(String date){
+    try {
+      return this.name + " Cost-Basis: $" + getCostAtDate(date);
+    } catch (Exception e) {
+      throw e;
+    }
+  }
 
   @Override
   public void accept(PortfolioVisitorModel visitor) throws Exception{
@@ -107,6 +136,32 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
         this.shares.get(share).remove(listIndexer);
       }
     }
+  }
+
+  private ShareModel returnShareWithSameDate(String tickerSymbol, String date) {
+    ShareModel shareSameDate = null;
+
+    for (ShareModel s : this.shares.get(tickerSymbol)) {
+      if (this.shareDateSameAsDesiredDate(s, date)) {
+        shareSameDate = s;
+        return shareSameDate;
+      }
+    }
+    return null;
+  }
+
+  private boolean shareDateSameAsDesiredDate(ShareModel share, String desiredDate) {
+    return share.getDate().equals(desiredDate);
+  }
+
+  private void updateCostMap() {
+    double todayCost = this.getCostBasisValue();
+    this.costBasisMap.put(LocalDate.now().toString(), new Double(todayCost));
+  }
+
+  protected double getCostAtDate(String date) {
+    Map.Entry<String, Double> entry = ((TreeMap) this.costBasisMap).floorEntry(date);
+    return entry != null ? entry.getValue() : 0.0;
   }
 
 }

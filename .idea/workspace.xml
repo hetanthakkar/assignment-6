@@ -5,25 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Added Assignment4 code to Assignment5 project">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/PortfolioBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/PortfolioVisitorModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Portfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/InflexiblePortfolio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/PortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/PortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +32,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "alexlee-23"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="84888745-4e84-42e2-b2d3-7b6678092326" />
+        <option name="url" value="https://github.com/CS5010-Assignments/Assignment5.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -50,25 +55,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.InflexiblePortfolioTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PortfolioRedesign&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AccountModelTest.executor": "Run",
+    "JUnit.AccountTextBasedControllerTest.executor": "Run",
+    "JUnit.InflexiblePortfolioTest.executor": "Run",
+    "JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor": "Run",
+    "JUnit.ShareTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "ShareRedesign",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.InflexiblePortfolioTest" />
+      <option name="METHOD_NAME" value="getAcceptBuyFlexiblePortfolio" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -93,20 +125,30 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="4" />
+          <line>92</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="5" />
+          <line>85</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="value" />
+        <PinnedItemInfo parentTag="model.FlexiblePortfolio" memberName="name" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

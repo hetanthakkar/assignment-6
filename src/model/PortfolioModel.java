@@ -35,5 +35,7 @@ public interface PortfolioModel {
    */
   String savePortfolio() throws Exception;
 
+  String getCostBasis(String date);
+
   void accept(PortfolioVisitorModel visitor) throws Exception;
 }

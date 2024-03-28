@@ -2,6 +2,8 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
+import model.FlexiblePortfolio.FlexiblePortfolioBuilder;
+import model.InflexiblePortfolio.InflexiblePortfolioBuilder;
 
 /**
  * The Account class represents a user account. It contains portfolios and
@@ -108,12 +110,12 @@ public class Account implements AccountModel {
                 " exists.", portfolioName));
       }
       this.portfolioName = portfolioName;
-//      if (portfolioType == "flexible"){
-//        this.portfolioBuild = new FlexiblePortfolioBuilder().createPortfolio(portfolioName);
-//      }
-//      else {
-        this.portfolioBuild = new InflexiblePortfolio.InflexiblePortfolioBuilder().createPortfolio(portfolioName);
-//      }
+      if (portfolioType == "flexible"){
+        this.portfolioBuild = new FlexiblePortfolioBuilder().createPortfolio(portfolioName);
+      }
+      else {
+        this.portfolioBuild = new InflexiblePortfolioBuilder().createPortfolio(portfolioName);
+      }
       return this;
     }
 

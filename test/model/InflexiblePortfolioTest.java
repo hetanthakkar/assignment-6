@@ -83,9 +83,14 @@ public class InflexiblePortfolioTest {
     int quantity1 = 1;
     testPortfolio = new FlexiblePortfolioBuilder()
             .createPortfolio(testPortfolioName).addShares(testShare1, quantity1).build();
+    System.out.println(testPortfolio.getCostBasis("2024-03-27"));
     PortfolioVisitorModel p1=new PortfolioBuyVisitor("AAPL", 5);
     testPortfolio.accept(p1);
+    System.out.println(testPortfolio.getCostBasis("2024-03-27"));
+    p1 = new PortfolioSellVisitor("AAPL", 3);
+    testPortfolio.accept(p1);
     System.out.println(testPortfolio.getPortfolioComposition());
+    System.out.println(testPortfolio.getCostBasis("2024-03-27"));
   }
 
 }
