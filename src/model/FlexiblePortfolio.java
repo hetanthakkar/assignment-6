@@ -7,11 +7,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel {
+/**
+ * The FlexiblePortfolio class represents a financial portfolio that allows dynamic buying
+ * and selling of shares.
+ * It extends the AbstractPortfolio class and implements the FlexiblePortfolioModel interface,
+ * providing methods for managing the composition of the portfolio, including adding and removing
+ * shares, as well as calculating the total value of the portfolio based on current market prices.
+ */
+class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel{
 
   private Map<String, Double> costBasisMap;
 
-  FlexiblePortfolio(PortfolioBuilder portfolioBuilder) {
+  /**
+   * Constructs a new FlexiblePortfolio object with the specified builder.
+   *
+   * @param portfolioBuilder The PortfolioBuilder used to build the portfolio.
+   */
+  FlexiblePortfolio(PortfolioBuilder portfolioBuilder){
     super(portfolioBuilder);
     this.costBasisMap = new TreeMap<String, Double>();
     this.updateCostMap();
@@ -84,8 +96,17 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     visitor.visit(this);
   }
 
-  public static class FlexiblePortfolioBuilder extends PortfolioBuilder {
-
+  /**
+   * The FlexiblePortfolioBuilder class provides a fluent interface
+   * for building FlexiblePortfolio objects.
+   */
+  public static class FlexiblePortfolioBuilder extends PortfolioBuilder{
+    /**
+     * Builds the portfolio.
+     *
+     * @return The constructed PortfolioModel.
+     * @throws Exception if the portfolio is empty.
+     */
     @Override
     PortfolioModel build() throws Exception {
       if (this.shares.isEmpty()) {

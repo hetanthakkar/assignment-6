@@ -8,14 +8,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * The AbstractPortfolio class is an abstract class that implements the PortfolioModel interface.
+ * It provides common functionality for portfolio objects.
+ */
 abstract class AbstractPortfolio implements PortfolioModel {
-  String name;
-  Map<String, List<ShareModel>> shares;
 
-  String creationDate;
+  /** The name of the portfolio. */
+  protected String name;
+
+  /** A map representing the shares held in the portfolio. */
+  protected Map<String, List<ShareModel>> shares;
+
+  /** The date of creation of the portfolio. */
+  protected String creationDate;
 
   /**
-   * Constructs a new Portfolio object with the specified builder.
+   * Constructs a new AbstractPortfolio object with the specified builder.
    *
    * @param newBuild The PortfolioBuilder used to build the portfolio.
    */
@@ -25,6 +34,13 @@ abstract class AbstractPortfolio implements PortfolioModel {
     this.creationDate = LocalDate.now().toString();
   }
 
+  /**
+   * Retrieves the total value of the portfolio at a certain date.
+   *
+   * @param date the date for which the total value is requested
+   * @return a string representing the total value of the portfolio
+   * @throws Exception if an error occurs while retrieving the total value
+   */
   @Override
   public String getTotalValueAtCertainDate(String date) throws Exception {
     try {
@@ -34,6 +50,11 @@ abstract class AbstractPortfolio implements PortfolioModel {
     }
   }
 
+  /**
+   * Retrieves the composition of the portfolio.
+   *
+   * @return a string representing the composition of the portfolio
+   */
   @Override
   public String getPortfolioComposition() {
     StringBuilder portComposition = new StringBuilder(this.name);
@@ -53,6 +74,12 @@ abstract class AbstractPortfolio implements PortfolioModel {
   // return null;
   // }
 
+  /**
+   * Retrieves the total quantity of shares for a given list of shares.
+   *
+   * @param listOfShares the list of shares
+   * @return the total quantity of shares
+   */
   private int getTotalQuantityOfShare(List<ShareModel> listOfShares) {
     int quantity = 0;
     for (ShareModel groupOfSameShares : listOfShares) {
@@ -61,6 +88,13 @@ abstract class AbstractPortfolio implements PortfolioModel {
     return quantity;
   }
 
+  /**
+   * Retrieves the total value of the portfolio at a certain date.
+   *
+   * @param date the date for which the total value is requested
+   * @return the total value of the portfolio
+   * @throws Exception if an error occurs while retrieving the total value
+   */
   protected double getPortfolioValue(String date) throws Exception {
     double totalValue = 0;
     if (date.equals(this.creationDate)) {
@@ -73,11 +107,18 @@ abstract class AbstractPortfolio implements PortfolioModel {
         } catch (Exception e) {
           throw e;
         }
+
       }
     }
     return totalValue;
   }
 
+  /**
+   * Saves the portfolio to a CSV file.
+   *
+   * @return a message indicating the success of the saving operation
+   * @throws Exception if an error occurs while saving the portfolio
+   */
   @Override
   public String savePortfolio() throws Exception {
     String filePath = System.getProperty("user.dir") + File.separator + "res" + File.separator;
@@ -102,9 +143,21 @@ abstract class AbstractPortfolio implements PortfolioModel {
     return "Successfully saved file in" + this.name + ".csv";
   }
 
+  /**
+   * Accepts a visitor for the portfolio.
+   *
+   * @param visitor the visitor to accept
+   * @throws Exception if an error occurs while accepting the visitor
+   */
   @Override
   public abstract void accept(PortfolioVisitorModel visitor) throws Exception;
 
+  /**
+   * Retrieves the cost basis of the portfolio.
+   *
+   * @param date the date for which the cost basis is requested
+   * @return a string representing the cost basis of the portfolio
+   */
   @Override
   public String getCostBasis(String date) {
     try {
@@ -114,7 +167,12 @@ abstract class AbstractPortfolio implements PortfolioModel {
     }
   }
 
-  protected double getCostBasisValue() {
+  /**
+   * Retrieves the cost basis value of the portfolio.
+   *
+   * @return the cost basis value of the portfolio
+   */
+  protected double getCostBasisValue(){
     double cost = 0;
     for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
       for (ShareModel groupOfSameShares : entry.getValue()) {
@@ -179,3 +237,4 @@ abstract class AbstractPortfolio implements PortfolioModel {
     return chart.toString();
   }
 }
+
