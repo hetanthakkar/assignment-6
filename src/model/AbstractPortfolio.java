@@ -60,6 +60,9 @@ abstract class AbstractPortfolio implements  PortfolioModel {
 
   protected double getPortfolioValue(String date) throws Exception {
     double totalValue = 0;
+    if (date.equals(this.creationDate)){
+      return getCostBasisValue();
+    }
     for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
       for (ShareModel groupOfSameShares : entry.getValue()) {
         try {

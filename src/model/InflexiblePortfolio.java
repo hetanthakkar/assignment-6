@@ -44,14 +44,5 @@ class InflexiblePortfolio extends AbstractPortfolio implements PortfolioModel {
       }
       return new InflexiblePortfolio(this);
     }
-
-    /**
-     * Retrieves the shares in the portfolio.
-     *
-     * @return The map of ticker symbols to lists of ShareModel.
-     */
-    public Map<String, List<ShareModel>> getShares() {
-      return shares;
-    }
   }
 }

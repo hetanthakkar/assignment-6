@@ -99,6 +99,9 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     if (this.isBeforeCreationDate(date)){
       return 0.0;
     }
+    if (date.equals(this.creationDate)){
+      return getCostAtDate(date);
+    }
     return super.getPortfolioValue(date);
   }
 

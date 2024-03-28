@@ -15,7 +15,6 @@ class PurchaseShares extends Share {
 
   private int quantity;
 
-  private String createdDate;
 
   /**
    * Constructs a new PurchaseShares object with the specified ticker symbol and

@@ -113,6 +113,19 @@ public class Account implements AccountModel {
     }
   }
 
+  @Override
+  public String getCostBasis(String portfolioName, String date) throws Exception {
+    if (this.accountPortfolios.containsKey(portfolioName)) {
+      try {
+        return this.accountPortfolios.get(portfolioName).getCostBasis(date);
+      } catch (Exception e) {
+        throw e;
+      }
+    } else {
+      throw new IllegalArgumentException("Portfolio does not exist.");
+    }
+  }
+
   /**
    * The AccountBuilder class provides methods for building portfolios within an
    * account.

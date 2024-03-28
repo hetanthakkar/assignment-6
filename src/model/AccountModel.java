@@ -70,4 +70,6 @@ public interface AccountModel {
   void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
 
   void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
+
+  String getCostBasis(String portfolioName, String date) throws Exception;
 }
