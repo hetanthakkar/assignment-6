@@ -1,12 +1,10 @@
 package model;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
-/**
- * PurchaseSharesTest is a test class to test PurchaseShares class functionality.
- */
+import org.junit.Test;
+
+/** PurchaseSharesTest is a test class to test PurchaseShares class functionality. */
 public class PurchaseSharesTest {
 
   ShareModel share;

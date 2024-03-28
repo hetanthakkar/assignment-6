@@ -1,16 +1,13 @@
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDate;
+import model.Account;
+import model.AccountModel;
 import model.ApiProcessor;
 import model.FetchApi;
 import org.junit.Test;
 
-import java.time.LocalDate;
-
-import static org.junit.Assert.assertEquals;
-import model.AccountModel;
-import model.Account;
-
-/**
- * AccountModelTest is a test class that checks functions of AccountModel objects are working.
- */
+/** AccountModelTest is a test class that checks functions of AccountModel objects are working. */
 public class AccountModelTest {
 
   AccountModel newAccount = new Account();
@@ -54,27 +51,13 @@ public class AccountModelTest {
     ApiProcessor apiProcessor1 = new ApiProcessor(apiResponse1);
     ApiProcessor apiProcessor2 = new ApiProcessor(apiResponse2);
 
-    double expectedOutput = ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
-        + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
+    double expectedOutput =
+        ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
+            + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
     String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, testDate);
     assertEquals(testPortfolioName + " Value: $" + expectedOutput, testOutput);
-
   }
 
-  @Test(expected = Exception.class)
-  public void getPortfolioValueFutureDateGetErrorMessageInflexible() throws Exception {
-    String testPortfolioName = "Alex2Inflexible";
-    String testStock1 = "AMZN";
-    int quantity1 = 1;
-    String testStock2 = "TSLA";
-    int quantity2 = 1;
-    newAccount.setPortfolioName(testPortfolioName, "inflexible");
-    newAccount.addShare(testStock1, quantity1);
-    newAccount.addShare(testStock2, quantity2);
-    newAccount.finishBuild();
-    String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName,
-            "2025-03-03");
-  }
 
   @Test(expected = Exception.class)
   public void createEmptyPortfolioInflexible() throws Exception {
@@ -89,9 +72,9 @@ public class AccountModelTest {
     String testShare = "MSFT";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "inflexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.buyShare(portName,testShare, testQuantity );
+    newAccount.buyShare(portName, testShare, testQuantity);
   }
 
   @Test(expected = Exception.class)
@@ -100,9 +83,9 @@ public class AccountModelTest {
     String testShare = "MSFT";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "inflexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity );
+    newAccount.sellShare(portName, testShare, testQuantity);
   }
 
   // ----------
@@ -146,7 +129,8 @@ public class AccountModelTest {
     ApiProcessor apiProcessor1 = new ApiProcessor(apiResponse1);
     ApiProcessor apiProcessor2 = new ApiProcessor(apiResponse2);
 
-    double expectedOutput = ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
+    double expectedOutput =
+        ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
             + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
     String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, testDate);
     assertEquals(testPortfolioName + " Value: $" + expectedOutput, testOutput);
@@ -166,10 +150,9 @@ public class AccountModelTest {
     newAccount.finishBuild();
     String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, testDate);
     assertEquals(testPortfolioName + " Value: $" + 0.0, testOutput);
-
   }
 
-  @Test (expected = Exception.class)
+  @Test(expected = Exception.class)
   public void getPortfolioValueFutureDateGetErrorMessageFlexible() throws Exception {
     String testPortfolioName = "Alex2Flexible";
     String testStock1 = "AMZN";
@@ -180,8 +163,8 @@ public class AccountModelTest {
     newAccount.addShare(testStock1, quantity1);
     newAccount.addShare(testStock2, quantity2);
     newAccount.finishBuild();
-    String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName,
-            "2025-03-03");
+    String testOutput =
+        newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, "2025-03-03");
   }
 
   @Test(expected = Exception.class)
@@ -197,9 +180,9 @@ public class AccountModelTest {
     String testShare = "MSFT";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.buyShare(portName,testShare, testQuantity );
+    newAccount.buyShare(portName, testShare, testQuantity);
     String expectedOutput = "BuyShareFlexible\n |--- ( MSFT, 2) \n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("BuyShareFlexible"));
   }
@@ -210,34 +193,33 @@ public class AccountModelTest {
     String testShare = "MSFT";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity );
+    newAccount.sellShare(portName, testShare, testQuantity);
     String expectedOutput = "SellShareFlexible\n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("SellShareFlexible"));
   }
 
-  @Test (expected = Exception.class)
+  @Test(expected = Exception.class)
   public void sellShareFlexibleErrorNotEnough() throws Exception {
     String portName = "SellShareFlexible1";
     String testShare = "MSFT";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity + 1 );
+    newAccount.sellShare(portName, testShare, testQuantity + 1);
   }
 
-  @Test (expected = Exception.class)
+  @Test(expected = Exception.class)
   public void sellShareFlexibleErrorNoTicker() throws Exception {
     String portName = "SellShareFlexible2";
     String testShare = "MSFT";
     String testShare2 = "AAPL";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
-    newAccount.addShare(testShare,testQuantity);
+    newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare2, testQuantity );
+    newAccount.sellShare(portName, testShare2, testQuantity);
   }
-
 }

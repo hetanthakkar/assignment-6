@@ -7,23 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * The FlexiblePortfolio class represents a financial portfolio that allows dynamic buying
- * and selling of shares.
- * It extends the AbstractPortfolio class and implements the FlexiblePortfolioModel interface,
- * providing methods for managing the composition of the portfolio, including adding and removing
- * shares, as well as calculating the total value of the portfolio based on current market prices.
- */
-class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel{
+class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel {
 
   private Map<String, Double> costBasisMap;
 
-  /**
-   * Constructs a new FlexiblePortfolio object with the specified builder.
-   *
-   * @param portfolioBuilder The PortfolioBuilder used to build the portfolio.
-   */
-  FlexiblePortfolio(PortfolioBuilder portfolioBuilder){
+  FlexiblePortfolio(PortfolioBuilder portfolioBuilder) {
     super(portfolioBuilder);
     this.costBasisMap = new TreeMap<String, Double>();
     this.updateCostMap();
@@ -31,7 +19,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
 
 
   @Override
-  public void buyShare(String tickerSymbol, int quantity) throws Exception{
+  public void buyShare(String tickerSymbol, int quantity) throws Exception {
     ShareModel newShare;
     if (this.shares.containsKey(tickerSymbol)) {
       newShare = this.returnShareWithSameDate(tickerSymbol, LocalDate.now().toString());
@@ -60,11 +48,11 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
 
 
   @Override
-  public void sellShare(String share, int quantity) throws Exception{
-    if (!this.shares.containsKey(share)){
+  public void sellShare(String share, int quantity) throws Exception {
+    if (!this.shares.containsKey(share)) {
       throw new Exception("Cannot sell stock that is not in the portfolio.");
     }
-    if (!this.enoughSharesToSell(quantity,this.getTotalQuantityOfSpecificShare(share))){
+    if (!this.enoughSharesToSell(quantity,this.getTotalQuantityOfSpecificShare(share))) {
       throw new Exception(String.format("Not enough shares of %s to sell.", share));
     }
     else {
@@ -83,7 +71,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
   }
 
   @Override
-  public String getCostBasis(String date){
+  public String getCostBasis(String date) {
     try {
       return this.name + " Cost-Basis: $" + getCostAtDate(date);
     } catch (Exception e) {
@@ -92,21 +80,12 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
   }
 
   @Override
-  public void accept(PortfolioVisitorModel visitor) throws Exception{
+  public void accept(PortfolioVisitorModel visitor) throws Exception {
     visitor.visit(this);
   }
 
-  /**
-   * The FlexiblePortfolioBuilder class provides a fluent interface
-   * for building FlexiblePortfolio objects.
-   */
-  public static class FlexiblePortfolioBuilder extends PortfolioBuilder{
-    /**
-     * Builds the portfolio.
-     *
-     * @return The constructed PortfolioModel.
-     * @throws Exception if the portfolio is empty.
-     */
+  public static class FlexiblePortfolioBuilder extends PortfolioBuilder {
+
     @Override
     PortfolioModel build() throws Exception {
       if (this.shares.isEmpty()) {
@@ -116,7 +95,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     }
   }
 
-  protected double getPortfolioValue(String date) throws Exception{
+  protected double getPortfolioValue(String date) throws Exception {
     if (this.isBeforeCreationDate(date)){
       return 0.0;
     }
@@ -126,14 +105,14 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return super.getPortfolioValue(date);
   }
 
-  private boolean isBeforeCreationDate(String date){
+  private boolean isBeforeCreationDate(String date) {
     DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     LocalDate givenDate = LocalDate.parse(date, inputFormatter);
     LocalDate createdDate = LocalDate.parse(this.creationDate, inputFormatter);
     return givenDate.isBefore(createdDate);
   }
 
-  private int getTotalQuantityOfSpecificShare(String tickerSymbol){
+  private int getTotalQuantityOfSpecificShare(String tickerSymbol) {
     int quantity = 0;
     if (this.shares.containsKey(tickerSymbol)){
       for (ShareModel s : this.shares.get(tickerSymbol)){
@@ -143,26 +122,25 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return quantity;
   }
 
-  private boolean enoughSharesToSell (int desiredSellAmount, int actualAmount){
+  private boolean enoughSharesToSell(int desiredSellAmount, int actualAmount) {
     return actualAmount - desiredSellAmount >= 0;
   }
 
   private void removeSharesFromPortfolio(String share, int desiredSellQuantity) {
     int listIndexer = 0;
-    while (desiredSellQuantity > 0){
+    while (desiredSellQuantity > 0) {
       if (this.shares.get(share).get(listIndexer).getQuantity() > desiredSellQuantity){
-        int endQuantity = this.shares.get(share).get(listIndexer).getQuantity() - desiredSellQuantity;
+        int endQuantity = this.shares.get(share).get(listIndexer).
+          getQuantity() - desiredSellQuantity;
         this.shares.get(share).get(listIndexer).setQuantity(endQuantity);
         desiredSellQuantity = 0;
       }
-//      else if (this.shares.get(share).get(listIndexer).getQuantity() == desiredSellQuantity){
-//        desiredSellQuantity = 0;
-//        this.shares.get(share).remove(li
-//      }
+
       else {
-        desiredSellQuantity = desiredSellQuantity - this.shares.get(share).get(listIndexer).getQuantity();
+        desiredSellQuantity = desiredSellQuantity - this.shares.get(share).
+          get(listIndexer).getQuantity();
         this.shares.get(share).remove(listIndexer);
-        if (this.shares.get(share).isEmpty()){
+        if (this.shares.get(share).isEmpty()) {
           this.shares.remove(share);
         }
       }

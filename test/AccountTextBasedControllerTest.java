@@ -19,8 +19,8 @@ import static org.junit.Assert.assertTrue;
 public class AccountTextBasedControllerTest {
   
   @Test
-  public void goCreatePortfolioCommand() {
-    AccountModel model = new MockModel();
+  public void goCreatePortfolioCommand() throws Exception {
+    MockModel model = new MockModel();
     AccountView view = new MockView();
     AccountController accountController = new AccountTextBasedController();
 
@@ -33,13 +33,13 @@ public class AccountTextBasedControllerTest {
 
     System.setIn(sysInBackup);
 
-    assertTrue(((MockModel) model).setPortfolioNameFlag);
-    assertTrue(((MockModel) model).addShareFlag);
-    assertTrue(((MockModel) model).finishBuildFlag);
+    assertTrue(model.setPortfolioNameFlag);
+    assertTrue(model.addShareFlag);
+    assertTrue(model.finishBuildFlag);
   }
 
   @Test
-  public void goPortfolioTotalValue() {
+  public void goPortfolioTotalValue() throws Exception {
     AccountModel model = new MockModel();
     AccountView view = new MockView();
     AccountController accountController = new AccountTextBasedController();
@@ -64,7 +64,7 @@ public class AccountTextBasedControllerTest {
   }
 
   @Test
-  public void goListPortfolios() {
+  public void goListPortfolios() throws Exception {
     AccountModel model = new MockModel();
     AccountView view = new MockView();
     AccountController accountController = new AccountTextBasedController();
@@ -88,7 +88,7 @@ public class AccountTextBasedControllerTest {
   }
 
   @Test
-  public void goShowComposition() {
+  public void goShowComposition() throws Exception {
     AccountModel model = new MockModel();
     AccountView view = new MockView();
     AccountController accountController = new AccountTextBasedController();
@@ -112,7 +112,7 @@ public class AccountTextBasedControllerTest {
   }
 
   @Test
-  public void goSave() {
+  public void goSave() throws Exception {
     AccountModel model = new MockModel();
     AccountView view = new MockView();
     AccountController accountController = new AccountTextBasedController();

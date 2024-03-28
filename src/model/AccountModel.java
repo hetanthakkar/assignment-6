@@ -96,4 +96,7 @@ public interface AccountModel {
    * @throws Exception when invalid portfolio or date is given
    */
   String getCostBasis(String portfolioName, String date) throws Exception;
+
+  String loadModel(String portfolioName) throws Exception;
+
 }

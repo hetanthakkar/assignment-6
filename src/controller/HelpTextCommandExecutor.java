@@ -3,39 +3,17 @@ package controller;
 import model.AccountModel;
 import view.AccountView;
 
-/**
- * The HelpTextCommandExecutor class is responsible for executing
- * the text command to display available commands and their descriptions.
- * It extends the AbstractTextCommandExecutor class and implements
- * the executeCommand() method to fulfill the contract of the TextCommandExecutor interface.
- */
-class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
+class HelpTextCommandExecutor extends AbstractTextCommandExecutor {
 
-  /**
-   * Constructs a HelpTextCommandExecutor with the specified model and view.
-   *
-   * @param model the model representing the account
-   * @param view  the view representing the account
-   */
-  HelpTextCommandExecutor(AccountModel model, AccountView view){
+  HelpTextCommandExecutor(AccountModel model, AccountView view) {
     super(model, view);
   }
-
-  /**
-   * Executes the command to display available commands and their descriptions.
-   * It retrieves the list of commands and their descriptions using the listAllCommands() method,
-   * then displays them using the view.
-   */
   @Override
+
   public void executeCommand() {
     view.displayMessage(this.listAllCommands());
   }
 
-  /**
-   * Generates a string containing all available commands and their descriptions.
-   *
-   * @return a string containing all available commands and their descriptions
-   */
   private String listAllCommands() {
     StringBuilder listOfCommands = new StringBuilder("Available commands: ");
     listOfCommands.append("\n");
@@ -54,13 +32,11 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
     return listOfCommands.toString();
   }
 
-  /**
-   * An enum representing different commands along with their descriptions and examples.
-   */
   private enum Command {
     CREATE(new String[]{"create",
-            "Creating a new portfolio with shares in it.",
-            "create [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
+                        "Creating a new portfolio with shares in it.",
+                        "create [Portfolio Name] ([TickerSymbol]-[quantity]) "
+                          + "([TickerSymbol]-[quantity])..."}),
     LIST(new String[]{"list", "Listing all portfolios.", ""}),
     SHOW(new String[]{"show", "Show composition of portfolio.", "show [Portfolio Name]"}),
     GETVALUE(new String[]{"getvalue", "Get total value of portfolio on certain date.",
@@ -69,7 +45,7 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
     QUIT(new String[]{"quit", "Quit the program.", ""}),
     LOAD(new String[]{"load",
             "Load your csv file for creating portfolio. Should have first line as portfolio name",
-            "load [/Users/hetanthakkar/Assignment4/retirement/]"}),
+            "load /Users/hetanthakkar/Assignment5/res/retirement/"}),
     SAVE(new String[]{"save", "Save your portfolio in a csv file", "save [portfolioName]"});
 
     private final String[] commandDescription;
@@ -78,32 +54,18 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
       this.commandDescription = commandDescription;
     }
 
-    /**
-     * Gets the name of the command.
-     *
-     * @return the name of the command
-     */
     String getCommandName() {
       return this.commandDescription[0];
     }
 
-    /**
-     * Gets the description of the command.
-     *
-     * @return the description of the command
-     */
     String getCommandDescription() {
       return this.commandDescription[1];
     }
 
-    /**
-     * Gets the example of the command.
-     *
-     * @return the example of the command
-     */
     String getCommandExample() {
       return this.commandDescription[2];
     }
-  }
-}
 
+  }
+
+}

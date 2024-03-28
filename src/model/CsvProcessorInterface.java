@@ -3,15 +3,11 @@ package model;
 import java.util.List;
 
 /**
- * The CsvProcessorInterface interface defines a contract for classes that
- * provide functionality
- * for processing CSV data. It specifies methods for validating symbols,
- * retrieving data, and
- * extracting portfolio information from CSV files, providing a consistent
- * interface for working
- * with CSV data processing.
+ * The CsvProcessorInterface interface defines a contract for classes that provide functionality for
+ * processing CSV data. It specifies methods for validating symbols, retrieving data, and extracting
+ * portfolio information from CSV files, providing a consistent interface for working with CSV data
+ * processing.
  */
-
 public interface CsvProcessorInterface {
 
   /**
@@ -34,7 +30,7 @@ public interface CsvProcessorInterface {
    * Retrieves data from the cache for a given symbol and date.
    *
    * @param symbol The symbol for which to retrieve data.
-   * @param date   The date for which to retrieve data.
+   * @param date The date for which to retrieve data.
    * @return The retrieved data as a CacheNode.
    */
   CacheNodeInterface getData(String symbol, String date);

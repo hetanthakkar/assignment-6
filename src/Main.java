@@ -17,7 +17,7 @@ public class Main {
    *
    * @param args The command line arguments (not used).
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     AccountModel model = new Account();
     AccountView view = new AccountTextBasedView();
     AccountController controller = new AccountTextBasedController();

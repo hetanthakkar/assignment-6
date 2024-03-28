@@ -17,5 +17,5 @@ public interface AccountController {
    * @param model Account model used for program logic
    * @param view  Account view used to display on program message on user interface
    */
-  void startController(AccountModel model, AccountView view);
+  void startController(AccountModel model, AccountView view) throws Exception;
 }

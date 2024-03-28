@@ -4,35 +4,25 @@ import java.io.File;
 import java.time.LocalDate;
 
 /**
- * The Share class represents a share in a portfolio. It provides methods to
- * retrieve
- * its cost, current value based on market prices, and value at a specific date,
- * offering functionality for tracking and managing individual shares within a
- * portfolio.
+ * The Share class represents a share in a portfolio. It provides methods to retrieve its cost,
+ * current value based on market prices, and value at a specific date, offering functionality for
+ * tracking and managing individual shares within a portfolio.
  */
-
 class Share implements ShareModel {
 
-  /**
-   * The ticker symbol of the share.
-   */
+  /** The ticker symbol of the share. */
   final String tickerSymbol;
 
-  /**
-   * The date of the share.
-   */
+  /** The date of the share. */
   final String date;
-  /**
-   * The CsvFileIOInterface for CSV file operations.
-   */
+
+  /** The CsvFileIOInterface for CSV file operations. */
   private final CsvFileIOInterface csvFileIO;
-  /**
-   * The cost of the share.
-   */
+
+  /** The cost of the share. */
   protected double cost;
-  /**
-   * Flag indicating whether cost is exact at the date.
-   */
+
+  /** Flag indicating whether cost is exact at the date. */
   boolean costAtExactDateFlag;
 
   /**
@@ -130,15 +120,16 @@ class Share implements ShareModel {
       if (apiProcessor.getApiPrice() == null) {
         throw new Exception("Data is not available in both API and cached data");
       }
-      String[] newEntry = {apiProcessor.getDate(),
-              String.valueOf(Double.parseDouble(apiProcessor.getApiPrice())),
-              apiProcessor.getSymbol()};
+      String[] newEntry = {
+        apiProcessor.getDate(),
+        String.valueOf(Double.parseDouble(apiProcessor.getApiPrice())),
+        apiProcessor.getSymbol()
+      };
       csvFileIO.storeData(newEntry);
       return Double.parseDouble(apiProcessor.getApiPrice());
     }
     String[] data = cacheNode.getData();
     return Double.parseDouble(data[1]);
-
   }
 
   @Override
@@ -157,8 +148,5 @@ class Share implements ShareModel {
   }
 
   @Override
-  public void setQuantity(int endQuantity) {
-
-  }
-
+  public void setQuantity(int endQuantity) {}
 }

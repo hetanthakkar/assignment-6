@@ -63,4 +63,9 @@ public class MockModel implements AccountModel {
   public String getCostBasis(String portfolioName, String date) throws Exception {
     return null;
   }
+
+  @Override
+  public String loadModel(String portfolioName) throws Exception {
+    return null;
+  }
 }

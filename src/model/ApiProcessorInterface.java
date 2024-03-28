@@ -1,13 +1,10 @@
 package model;
 
 /**
- * The ApiProcessorInterface interface defines a contract for classes that
- * process API data.
- * It specifies methods for extracting and handling API responses, providing a
- * consistent
- * way to interact with and process data from various APIs.
+ * The ApiProcessorInterface interface defines a contract for classes that process API data. It
+ * specifies methods for extracting and handling API responses, providing a consistent way to
+ * interact with and process data from various APIs.
  */
-
 public interface ApiProcessorInterface {
 
   /**
@@ -30,4 +27,6 @@ public interface ApiProcessorInterface {
    * @return The symbol associated with the API data.
    */
   String getSymbol();
+
+  String getApiOpeningPrice();
 }

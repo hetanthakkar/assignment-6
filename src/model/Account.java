@@ -1,24 +1,22 @@
 package model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import model.FlexiblePortfolio.FlexiblePortfolioBuilder;
 import model.InflexiblePortfolio.InflexiblePortfolioBuilder;
 
 /**
- * The Account class represents a user account. It contains portfolios and
- * allows operations
- * such as adding shares, retrieving portfolio composition, and saving
- * portfolios.
+ * The Account class represents a user account. It contains portfolios and allows operations such as
+ * adding shares, retrieving portfolio composition, and saving portfolios.
  */
 public class Account implements AccountModel {
 
   private Map<String, PortfolioModel> accountPortfolios;
   private AccountBuilder accountBuild;
 
-  /**
-   * Constructs a new Account object.
-   */
+  /** Constructs a new Account object. */
   public Account() {
     accountPortfolios = new HashMap<>();
     accountBuild = new AccountBuilder();
@@ -51,7 +49,7 @@ public class Account implements AccountModel {
 
   @Override
   public String getPortfolioTotalValueAtCertainDate(String portfolioName, String date)
-          throws Exception {
+      throws Exception {
     if (this.accountPortfolios.containsKey(portfolioName)) {
       try {
         return this.accountPortfolios.get(portfolioName).getTotalValueAtCertainDate(date);
@@ -88,27 +86,29 @@ public class Account implements AccountModel {
   }
 
   @Override
-  public void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception{
-    if (!this.accountPortfolios.containsKey(portfolioName)){
+  public void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception {
+    if (!this.accountPortfolios.containsKey(portfolioName)) {
       throw new IllegalArgumentException("Portfolio does not exist.");
     }
     try {
-      this.accountPortfolios.get(portfolioName).accept(new PortfolioBuyVisitor(tickerSymbol,quantity));
-    }
-    catch (Exception e){
+      this.accountPortfolios
+          .get(portfolioName)
+          .accept(new PortfolioBuyVisitor(tickerSymbol, quantity));
+    } catch (Exception e) {
       throw e;
     }
   }
 
   @Override
-  public void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception{
-    if (!this.accountPortfolios.containsKey(portfolioName)){
+  public void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception {
+    if (!this.accountPortfolios.containsKey(portfolioName)) {
       throw new IllegalArgumentException("Portfolio does not exist.");
     }
     try {
-      this.accountPortfolios.get(portfolioName).accept(new PortfolioSellVisitor(tickerSymbol,quantity));
-    }
-    catch (Exception e){
+      this.accountPortfolios
+          .get(portfolioName)
+          .accept(new PortfolioSellVisitor(tickerSymbol, quantity));
+    } catch (Exception e) {
       throw e;
     }
   }
@@ -126,10 +126,33 @@ public class Account implements AccountModel {
     }
   }
 
-  /**
-   * The AccountBuilder class provides methods for building portfolios within an
-   * account.
-   */
+  @Override
+  public String loadModel( String restOfCommand) throws Exception {
+    String[] partOfInput = restOfCommand.split(" ");
+    int lastIndex = partOfInput[0].lastIndexOf("/");
+    String fileLocation = partOfInput[0].substring(0, lastIndex);
+    String fileName = partOfInput[0].substring(lastIndex + 1);
+    CsvFileIOInterface csvFileIO = new CsvFileIO(fileName, fileLocation);
+    CsvProcessorInterface csvProcessor = new CsvProcessor(csvFileIO.getData());
+    String portfolioName1 = csvProcessor.getPortfolioNameFromCsv();
+    System.out.println(portfolioName1);
+    this.setPortfolioName(portfolioName1, "flexible");
+    try {
+      List<ParsedShares> listNewShares = csvProcessor.getSharesFromCsv();
+      for (model.ParsedShares i : listNewShares) {
+        this.addShare(i.getTickerSymbol(), i.getQuantity());
+        System.out.println(i.getTickerSymbol() + "As" + i.getQuantity());
+      }
+      this.finishBuild();
+    } catch (Exception e) {
+      return (e.getMessage()
+        + String.format(". %s was not  created.", portfolioName1));
+
+    }
+    return (String.format("Succesfully created %s", portfolioName1));
+  }
+
+  /** The AccountBuilder class provides methods for building portfolios within an account. */
   static class AccountBuilder {
     private static final Account account = new Account();
     private String portfolioName;
@@ -143,16 +166,16 @@ public class Account implements AccountModel {
      * @throws IllegalArgumentException if the portfolio already exists.
      */
     AccountBuilder createPortfolio(String portfolioName, String portfolioType) {
-      // portfolio builder now abstract, define specific builder by taking in a new field specifying type
+      // portfolio builder now abstract, define specific builder by taking in a new field specifying
+      // type
       if (account.accountPortfolios.containsKey(portfolioName)) {
-        throw new IllegalArgumentException(String.format("%s is a portfolio that already" +
-                " exists.", portfolioName));
+        throw new IllegalArgumentException(
+            String.format("%s is a portfolio that already" + " exists.", portfolioName));
       }
       this.portfolioName = portfolioName;
-      if (portfolioType == "flexible"){
+      if (Objects.equals(portfolioType, "flexible")) {
         this.portfolioBuild = new FlexiblePortfolioBuilder().createPortfolio(portfolioName);
-      }
-      else {
+      } else {
         this.portfolioBuild = new InflexiblePortfolioBuilder().createPortfolio(portfolioName);
       }
       return this;
@@ -162,7 +185,7 @@ public class Account implements AccountModel {
      * Adds shares to the currently building portfolio.
      *
      * @param tickerSymbol The ticker symbol of the shares to add.
-     * @param quantity     The quantity of shares to add.
+     * @param quantity The quantity of shares to add.
      * @return The AccountBuilder object.
      * @throws Exception if there is an error while adding shares.
      */
