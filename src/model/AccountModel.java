@@ -66,4 +66,8 @@ public interface AccountModel {
    * @throws Exception when given portfolio is invalid
    */
   String savePortfolio(String portfolioName) throws Exception;
+
+  void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
+
+  void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
 }

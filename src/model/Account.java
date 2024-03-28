@@ -87,6 +87,32 @@ public class Account implements AccountModel {
     }
   }
 
+  @Override
+  public void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception{
+    if (!this.accountPortfolios.containsKey(portfolioName)){
+      throw new IllegalArgumentException("Portfolio does not exist.");
+    }
+    try {
+      this.accountPortfolios.get(portfolioName).accept(new PortfolioBuyVisitor(tickerSymbol,quantity));
+    }
+    catch (Exception e){
+      throw e;
+    }
+  }
+
+  @Override
+  public void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception{
+    if (!this.accountPortfolios.containsKey(portfolioName)){
+      throw new IllegalArgumentException("Portfolio does not exist.");
+    }
+    try {
+      this.accountPortfolios.get(portfolioName).accept(new PortfolioSellVisitor(tickerSymbol,quantity));
+    }
+    catch (Exception e){
+      throw e;
+    }
+  }
+
   /**
    * The AccountBuilder class provides methods for building portfolios within an
    * account.

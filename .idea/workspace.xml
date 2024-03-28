@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Added Assignment4 code to Assignment5 project">
-      <change afterPath="$PROJECT_DIR$/test/model/AbstractPortfolioTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" afterDir="false" />
+    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Added new Portfolio Tests">
+      <change afterPath="$PROJECT_DIR$/test/MockModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/MockView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountTextBasedControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +57,11 @@
   "keyToString": {
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.AccountModelTest.executor": "Run",
+    "JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible.executor": "Run",
     "JUnit.AccountTextBasedControllerTest.executor": "Run",
     "JUnit.FlexiblePortfolioTest.executor": "Run",
     "JUnit.FlexiblePortfolioTest.getAcceptSell.executor": "Run",
+    "JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere.executor": "Run",
     "JUnit.InflexiblePortfolioTest.executor": "Run",
     "JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor": "Run",
     "JUnit.ShareTest.executor": "Run",
@@ -91,6 +95,16 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AccountModelTest" />
+      <option name="METHOD_NAME" value="getPortfolioValueFutureDateGetErrorMessageFlexible" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FlexiblePortfolioTest.getAcceptSell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <extension name="coverage">
@@ -141,6 +155,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" />
         <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere" />
         <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSell" />
         <item itemvalue="JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" />
@@ -174,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711584760741</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added new Portfolio Tests">
+      <option name="closed" value="true" />
+      <created>1711588139134</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711588139134</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +205,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
+    <MESSAGE value="Added new Portfolio Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new Portfolio Tests" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
