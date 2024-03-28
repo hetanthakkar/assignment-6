@@ -7,14 +7,33 @@ import model.AccountModel;
 import model.ParsedShares;
 import view.AccountView;
 
+/**
+ * The BuyTextCommandExecutor class is responsible for executing the text command to buy shares.
+ * It extends the AbstractTextCommandExecutor class and implements the executeCommand()
+ * method to fulfill the contract of the TextCommandExecutor interface.
+ */
 class BuyTextCommandExecutor extends AbstractTextCommandExecutor {
 
-  String[] partOfInput;
+  /** An array containing parts of the input command. */
+  private String[] partOfInput;
+
+  /**
+   * Constructs a BuyTextCommandExecutor with the specified model, view, and rest of the command.
+   *
+   * @param model         the model representing the account
+   * @param view          the view representing the account
+   * @param restOfCommand the remaining part of the command containing share information
+   */
   BuyTextCommandExecutor(AccountModel model, AccountView view, String restOfCommand) {
-    super(model,view);
+    super(model, view);
     this.partOfInput = restOfCommand.split(" ");
   }
 
+  /**
+   * Executes the command to buy shares.
+   * It parses the input command to extract share information, then buys the shares using the model.
+   * It displays appropriate messages using the view based on the outcome of the buying process.
+   */
   @Override
   public void executeCommand() {
     if (partOfInput.length <= 1) {
@@ -24,15 +43,21 @@ class BuyTextCommandExecutor extends AbstractTextCommandExecutor {
     try {
       List<ParsedShares> listNewShares = this.parseCreatePortfolioAndShare();
       for (ParsedShares i : listNewShares) {
-        model.buyShare(portfolioName ,i.getTickerSymbol(), i.getQuantity());
-        view.displayMessage(String.format("Successfully bought %d-%s in %s", i.getQuantity(), i.getTickerSymbol() ,portfolioName));
+        model.buyShare(portfolioName, i.getTickerSymbol(), i.getQuantity());
+        view.displayMessage(String.format("Successfully bought %d-%s in %s", i.getQuantity(),
+                i.getTickerSymbol(), portfolioName));
       }
     } catch (Exception e) {
-      view.displayMessage(e.getMessage()
-              + String.format("Buying was not done.", portfolioName));
+      view.displayMessage(e.getMessage() + String.format(" Buying was not done.", portfolioName));
     }
   }
 
+  /**
+   * Parses the input command to extract share information.
+   *
+   * @return a list of ParsedShares objects containing share information
+   * @throws IllegalArgumentException if the input command is not formatted correctly
+   */
   protected List<ParsedShares> parseCreatePortfolioAndShare() {
     List<ParsedShares> shares = new ArrayList<ParsedShares>();
     for (int i = 1; i < this.partOfInput.length; i++) {
@@ -57,3 +82,4 @@ class BuyTextCommandExecutor extends AbstractTextCommandExecutor {
     return shares;
   }
 }
+

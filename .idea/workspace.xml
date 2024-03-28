@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Added account test">
-      <change afterPath="$PROJECT_DIR$/src/controller/AbstractTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/BuyTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/CreateTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/GetCostTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/GetValueTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/HelpTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ListPortfolioTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/SaveTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/SellTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ShowTextCommandExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/TextCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/InflexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/InflexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
-    </list>
+    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Implemented Command Design Pattern" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711591146716</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented Command Design Pattern">
+      <option name="closed" value="true" />
+      <created>1711655942802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711655942802</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +219,8 @@
     <MESSAGE value="Changed Portfolio design, created InflexiblePortfolio and FlexiblePortfolio and implemented visitor pattern, buy and sell methods." />
     <MESSAGE value="Added new Portfolio Tests" />
     <MESSAGE value="Added account test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added account test" />
+    <MESSAGE value="Implemented Command Design Pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Command Design Pattern" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

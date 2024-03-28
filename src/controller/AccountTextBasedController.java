@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -58,15 +57,18 @@ public class AccountTextBasedController implements AccountController {
           textCommandExecutor.executeCommand();
           break;
         case ("create"):
-          textCommandExecutor = new CreateTextCommandExecutor(model, view, "inflexible", restOfCommand);
+          textCommandExecutor = new CreateTextCommandExecutor(model, view, "inflexible",
+                  restOfCommand);
           textCommandExecutor.executeCommand();
           break;
         case ("create-inflexible"):
-          textCommandExecutor = new CreateTextCommandExecutor(model, view, "inflexible", restOfCommand);
+          textCommandExecutor = new CreateTextCommandExecutor(model, view, "inflexible",
+                  restOfCommand);
           textCommandExecutor.executeCommand();
           break;
         case ("create-flexible"):
-          textCommandExecutor = new CreateTextCommandExecutor(model, view, "flexible", restOfCommand);
+          textCommandExecutor = new CreateTextCommandExecutor(model, view, "flexible",
+                  restOfCommand);
           textCommandExecutor.executeCommand();
           break;
         case ("buy"):
