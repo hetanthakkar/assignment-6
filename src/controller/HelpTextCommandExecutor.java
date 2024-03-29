@@ -9,7 +9,7 @@ import view.AccountView;
  * It extends the AbstractTextCommandExecutor class and implements
  * the executeCommand() method to fulfill the contract of the TextCommandExecutor interface.
  */
-class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
+class HelpTextCommandExecutor extends AbstractTextCommandExecutor {
 
   /**
    * Constructs a HelpTextCommandExecutor with the specified model and view.
@@ -17,7 +17,7 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
    * @param model the model representing the account
    * @param view  the view representing the account
    */
-  HelpTextCommandExecutor(AccountModel model, AccountView view){
+  HelpTextCommandExecutor(AccountModel model, AccountView view) {
     super(model, view);
   }
 
@@ -59,17 +59,17 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
    */
   private enum Command {
     CREATE(new String[]{"create",
-            "Creating a new portfolio with shares in it.",
-            "create [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
+        "Creating a new portfolio with shares in it.",
+        "create [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
     LIST(new String[]{"list", "Listing all portfolios.", ""}),
     SHOW(new String[]{"show", "Show composition of portfolio.", "show [Portfolio Name]"}),
     GETVALUE(new String[]{"getvalue", "Get total value of portfolio on certain date.",
-            "getvalue [Portfolio Name] [yyyy-mm-dd]"}),
+        "getvalue [Portfolio Name] [yyyy-mm-dd]"}),
     HELP(new String[]{"help", "Listing all available commands and their examples.", ""}),
     QUIT(new String[]{"quit", "Quit the program.", ""}),
     LOAD(new String[]{"load",
-            "Load your csv file for creating portfolio. Should have first line as portfolio name",
-            "load /Users/hetanthakkar/Assignment5/res/retirement/"}),
+        "Load your csv file for creating portfolio. Should have first line as portfolio name",
+        "load /Users/hetanthakkar/Assignment5/res/retirement/"}),
     SAVE(new String[]{"save", "Save your portfolio in a csv file", "save [portfolioName]"});
 
     private final String[] commandDescription;
@@ -107,4 +107,3 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor{
   }
 }
 
-}

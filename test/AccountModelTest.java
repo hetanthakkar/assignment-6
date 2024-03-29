@@ -1,13 +1,17 @@
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.time.LocalDate;
+
 import model.Account;
 import model.AccountModel;
 import model.ApiProcessor;
 import model.FetchApi;
-import org.junit.Test;
 
-/** AccountModelTest is a test class that checks functions of AccountModel objects are working. */
+import static org.junit.Assert.assertEquals;
+
+/**
+ * AccountModelTest is a test class that checks functions of AccountModel objects are working.
+ */
 public class AccountModelTest {
 
   AccountModel newAccount = new Account();
@@ -52,8 +56,8 @@ public class AccountModelTest {
     ApiProcessor apiProcessor2 = new ApiProcessor(apiResponse2);
 
     double expectedOutput =
-        ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
-            + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
+            ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
+                    + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
     String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, testDate);
     assertEquals(testPortfolioName + " Value: $" + expectedOutput, testOutput);
   }
@@ -130,8 +134,8 @@ public class AccountModelTest {
     ApiProcessor apiProcessor2 = new ApiProcessor(apiResponse2);
 
     double expectedOutput =
-        ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
-            + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
+            ((Double.parseDouble(apiProcessor1.getApiPrice()) * quantity1)
+                    + (Double.parseDouble(apiProcessor2.getApiPrice()) * quantity2));
     String testOutput = newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, testDate);
     assertEquals(testPortfolioName + " Value: $" + expectedOutput, testOutput);
   }
@@ -164,7 +168,7 @@ public class AccountModelTest {
     newAccount.addShare(testStock2, quantity2);
     newAccount.finishBuild();
     String testOutput =
-        newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, "2025-03-03");
+            newAccount.getPortfolioTotalValueAtCertainDate(testPortfolioName, "2025-03-03");
   }
 
   @Test(expected = Exception.class)

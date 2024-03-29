@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-import java.util.Map;
 
 /**
  * The InflexiblePortfolio class represents a financial portfolio with a fixed
@@ -32,7 +30,8 @@ class InflexiblePortfolio extends AbstractPortfolio implements PortfolioModel {
   }
 
   /**
-   * The InflexiblePortfolioBuilder class provides a fluent interface for building InflexiblePortfolio objects.
+   * The InflexiblePortfolioBuilder class provides a fluent interface for building
+   * InflexiblePortfolio objects.
    */
   public static class InflexiblePortfolioBuilder extends PortfolioBuilder {
 

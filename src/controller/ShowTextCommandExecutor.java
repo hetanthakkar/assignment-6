@@ -11,8 +11,10 @@ import view.AccountView;
  */
 class ShowTextCommandExecutor extends AbstractTextCommandExecutor {
 
-  /** The name of the portfolio to be shown. */
-  private String portName;
+  /**
+   * The name of the portfolio to be shown.
+   */
+  private final String portName;
 
   /**
    * Constructs a ShowTextCommandExecutor with the specified model, view, and portfolio name.
@@ -21,7 +23,7 @@ class ShowTextCommandExecutor extends AbstractTextCommandExecutor {
    * @param view     the view representing the account
    * @param portName the name of the portfolio to be shown
    */
-  ShowTextCommandExecutor(AccountModel model, AccountView view, String portName){
+  ShowTextCommandExecutor(AccountModel model, AccountView view, String portName) {
     super(model, view);
     this.portName = portName;
   }

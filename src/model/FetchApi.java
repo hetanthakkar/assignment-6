@@ -38,8 +38,9 @@ public class FetchApi implements FetchApiInterface {
   @Override
   public String fetchData(String symbol, String date) {
     String apiURL = String.format(
-      "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=%s&apikey=%s&datatype=csv",
-      symbol, apiKey);
+        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=" +
+                "full&symbol=%s&apikey=%s&datatype=csv",
+        symbol, apiKey);
     try {
       URL url = new URL(apiURL);
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -85,11 +86,47 @@ public class FetchApi implements FetchApiInterface {
   }
 
   @Override
+  public String fetchData(String symbol) {
+    String apiURL = String.format(
+            "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=" +
+                    "full&symbol=%s&apikey=%s&datatype=csv",
+            symbol, apiKey);
+    try {
+      URL url = new URL(apiURL);
+      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+      connection.setRequestMethod("GET");
+      int responseCode = connection.getResponseCode();
+      if (responseCode == HttpURLConnection.HTTP_OK) {
+        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String inputLine;
+        boolean isFirstLine = true;
+        String matchingLine = null;
+        while ((inputLine = in.readLine()) != null) {
+          if (isFirstLine) {
+            isFirstLine = false;
+          } else {
+            matchingLine = inputLine;
+            break;
+          }
+        }
+        in.close();
+        return matchingLine;
+      } else {
+        System.out.println("HTTP Error: " + responseCode);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override
   public String fetchPrevData(String symbol, String date) {
     String apiURL =
-      String.format(
-        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=%s&apikey=%s&datatype=csv",
-        symbol, apiKey);
+        String.format(
+          "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=" +
+                  "full&symbol=%s&apikey=%s&datatype=csv",
+          symbol, apiKey);
     try {
       URL url = new URL(apiURL);
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -137,41 +174,6 @@ public class FetchApi implements FetchApiInterface {
     return null;
   }
 
-
-
-  @Override
-  public String fetchData(String symbol) {
-    String apiURL = String.format(
-      "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&outputsize=full&symbol=%s&apikey=%s&datatype=csv",
-      symbol, apiKey);
-    try {
-      URL url = new URL(apiURL);
-      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-      connection.setRequestMethod("GET");
-      int responseCode = connection.getResponseCode();
-      if (responseCode == HttpURLConnection.HTTP_OK) {
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        String inputLine;
-        boolean isFirstLine = true;
-        String matchingLine = null;
-        while ((inputLine = in.readLine()) != null) {
-          if (isFirstLine) {
-            isFirstLine = false;
-          } else {
-            matchingLine = inputLine;
-            break;
-          }
-        }
-        in.close();
-        return matchingLine;
-      } else {
-        System.out.println("HTTP Error: " + responseCode);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return null;
-  }
 
 
 }

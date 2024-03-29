@@ -9,10 +9,12 @@ import view.AccountView;
  * It extends the AbstractTextCommandExecutor class and implements
  * the executeCommand() method to fulfill the contract of the TextCommandExecutor interface.
  */
-class SaveTextCommandExecutor extends AbstractTextCommandExecutor{
+class SaveTextCommandExecutor extends AbstractTextCommandExecutor {
 
-  /** The name of the portfolio to be saved. */
-  private String portName;
+  /**
+   * The name of the portfolio to be saved.
+   */
+  private final String portName;
 
   /**
    * Constructs a SaveTextCommandExecutor with the specified model, view, and portfolio name.
@@ -21,7 +23,7 @@ class SaveTextCommandExecutor extends AbstractTextCommandExecutor{
    * @param view     the view representing the account
    * @param portName the name of the portfolio to be saved
    */
-  SaveTextCommandExecutor(AccountModel model, AccountView view, String portName){
+  SaveTextCommandExecutor(AccountModel model, AccountView view, String portName) {
     super(model, view);
     this.portName = portName;
   }

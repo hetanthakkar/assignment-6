@@ -3,12 +3,14 @@ package controller;
 import model.AccountModel;
 import view.AccountView;
 
-class LoadCommandCommandExecutor extends AbstractTextCommandExecutor{
+class LoadCommandExecutor extends AbstractTextCommandExecutor {
   String portName;
-  LoadCommandCommandExecutor(AccountModel model, AccountView view, String portName){
+
+  LoadCommandExecutor(AccountModel model, AccountView view, String portName) {
     super(model, view);
     this.portName = portName;
   }
+
   @Override
   public void executeCommand() {
     try {

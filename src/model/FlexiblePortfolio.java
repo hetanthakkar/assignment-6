@@ -14,16 +14,16 @@ import java.util.TreeMap;
  * providing methods for managing the composition of the portfolio, including adding and removing
  * shares, as well as calculating the total value of the portfolio based on current market prices.
  */
-class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel{
+class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel {
 
-  private Map<String, Double> costBasisMap;
+  private final Map<String, Double> costBasisMap;
 
   /**
    * Constructs a new FlexiblePortfolio object with the specified builder.
    *
    * @param portfolioBuilder The PortfolioBuilder used to build the portfolio.
    */
-  FlexiblePortfolio(PortfolioBuilder portfolioBuilder){
+  FlexiblePortfolio(PortfolioBuilder portfolioBuilder) {
     super(portfolioBuilder);
     this.costBasisMap = new TreeMap<String, Double>();
     this.updateCostMap();
@@ -64,10 +64,9 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     if (!this.shares.containsKey(share)) {
       throw new Exception("Cannot sell stock that is not in the portfolio.");
     }
-    if (!this.enoughSharesToSell(quantity,this.getTotalQuantityOfSpecificShare(share))) {
+    if (!this.enoughSharesToSell(quantity, this.getTotalQuantityOfSpecificShare(share))) {
       throw new Exception(String.format("Not enough shares of %s to sell.", share));
-    }
-    else {
+    } else {
       this.removeSharesFromPortfolio(share, quantity);
     }
     this.updateCostMap();
@@ -96,31 +95,11 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     visitor.visit(this);
   }
 
-  /**
-   * The FlexiblePortfolioBuilder class provides a fluent interface
-   * for building FlexiblePortfolio objects.
-   */
-  public static class FlexiblePortfolioBuilder extends PortfolioBuilder{
-    /**
-     * Builds the portfolio.
-     *
-     * @return The constructed PortfolioModel.
-     * @throws Exception if the portfolio is empty.
-     */
-    @Override
-    PortfolioModel build() throws Exception {
-      if (this.shares.isEmpty()) {
-        throw new Exception("Cannot create empty portfolio.");
-      }
-      return new FlexiblePortfolio(this);
-    }
-  }
-
   protected double getPortfolioValue(String date) throws Exception {
-    if (this.isBeforeCreationDate(date)){
+    if (this.isBeforeCreationDate(date)) {
       return 0.0;
     }
-    if (date.equals(this.creationDate)){
+    if (date.equals(this.creationDate)) {
       return getCostAtDate(date);
     }
     return super.getPortfolioValue(date);
@@ -135,8 +114,8 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
 
   private int getTotalQuantityOfSpecificShare(String tickerSymbol) {
     int quantity = 0;
-    if (this.shares.containsKey(tickerSymbol)){
-      for (ShareModel s : this.shares.get(tickerSymbol)){
+    if (this.shares.containsKey(tickerSymbol)) {
+      for (ShareModel s : this.shares.get(tickerSymbol)) {
         quantity = quantity + s.getQuantity();
       }
     }
@@ -150,16 +129,14 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
   private void removeSharesFromPortfolio(String share, int desiredSellQuantity) {
     int listIndexer = 0;
     while (desiredSellQuantity > 0) {
-      if (this.shares.get(share).get(listIndexer).getQuantity() > desiredSellQuantity){
+      if (this.shares.get(share).get(listIndexer).getQuantity() > desiredSellQuantity) {
         int endQuantity = this.shares.get(share).get(listIndexer).
-          getQuantity() - desiredSellQuantity;
+                getQuantity() - desiredSellQuantity;
         this.shares.get(share).get(listIndexer).setQuantity(endQuantity);
         desiredSellQuantity = 0;
-      }
-
-      else {
+      } else {
         desiredSellQuantity = desiredSellQuantity - this.shares.get(share).
-          get(listIndexer).getQuantity();
+                get(listIndexer).getQuantity();
         this.shares.get(share).remove(listIndexer);
         if (this.shares.get(share).isEmpty()) {
           this.shares.remove(share);
@@ -192,6 +169,26 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
   protected double getCostAtDate(String date) {
     Map.Entry<String, Double> entry = ((TreeMap) this.costBasisMap).floorEntry(date);
     return entry != null ? entry.getValue() : 0.0;
+  }
+
+  /**
+   * The FlexiblePortfolioBuilder class provides a fluent interface
+   * for building FlexiblePortfolio objects.
+   */
+  public static class FlexiblePortfolioBuilder extends PortfolioBuilder {
+    /**
+     * Builds the portfolio.
+     *
+     * @return The constructed PortfolioModel.
+     * @throws Exception if the portfolio is empty.
+     */
+    @Override
+    PortfolioModel build() throws Exception {
+      if (this.shares.isEmpty()) {
+        throw new Exception("Cannot create empty portfolio.");
+      }
+      return new FlexiblePortfolio(this);
+    }
   }
 
 }

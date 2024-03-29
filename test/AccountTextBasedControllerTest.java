@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
  * class functions.
  */
 public class AccountTextBasedControllerTest {
-  
+
   @Test
   public void goCreatePortfolioCommand() throws Exception {
     MockModel model = new MockModel();
@@ -26,7 +26,7 @@ public class AccountTextBasedControllerTest {
 
     InputStream sysInBackup = System.in; // backup System.in to restore it later
     ByteArrayInputStream in = new ByteArrayInputStream(
-        ("create portfolio (AAPL-3)\n" + "quit\n").getBytes());
+            ("create portfolio (AAPL-3)\n" + "quit\n").getBytes());
     System.setIn(in);
 
     accountController.startController(model, view);
@@ -46,7 +46,7 @@ public class AccountTextBasedControllerTest {
 
     InputStream sysInBackup = System.in;
     ByteArrayInputStream in = new ByteArrayInputStream(("getvalue portfolio 2024-03-14\n"
-        + "quit\n").getBytes());
+            + "quit\n").getBytes());
     System.setIn(in);
 
     PrintStream sysOutBackup = System.out;

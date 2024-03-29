@@ -1,9 +1,9 @@
 package model;
 
-class PortfolioBuyVisitor implements PortfolioVisitorModel{
+class PortfolioBuyVisitor implements PortfolioVisitorModel {
 
-  private String tickerSymbol;
-  private int quantity;
+  private final String tickerSymbol;
+  private final int quantity;
 
   /**
    * Constructs a new PortfolioBuyVisitor with the specified ticker symbol
@@ -34,7 +34,7 @@ class PortfolioBuyVisitor implements PortfolioVisitorModel{
    *
    * @param portfolio The PortfolioModel portfolio to visit.
    * @throws UnsupportedOperationException if an attempt is made to buy shares
-   *                                         in an inflexible portfolio.
+   *                                       in an inflexible portfolio.
    */
   @Override
   public void visit(PortfolioModel portfolio) {

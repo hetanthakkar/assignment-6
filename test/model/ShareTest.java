@@ -1,15 +1,18 @@
 package model;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import org.junit.Test;
 
-/** ShareTest is a test class to test Share class functionality. */
+import static org.junit.Assert.assertEquals;
+
+/**
+ * ShareTest is a test class to test Share class functionality.
+ */
 public class ShareTest {
 
   ShareModel testShare;
@@ -119,7 +122,7 @@ public class ShareTest {
     List<Map<String, Integer>> expectedCrossovers = new ArrayList<>();
     expectedCrossovers.add(Map.of("2022-06-26", -1));
     List<Map<String, Integer>> crossoversList =
-        Arrays.asList(sh.crossovers("2022-06-26", "2022-03-26", 2));
+            Arrays.asList(sh.crossovers("2022-06-26", "2022-03-26", 2));
 
     assertEquals(expectedCrossovers, crossoversList);
   }
@@ -139,16 +142,15 @@ public class ShareTest {
     expectedCrossovers.add(Map.of("2022-05-28", 1));
     expectedCrossovers.add(Map.of("2022-03-26", -1));
 
-//    List<Map<String, Integer>> crossoversList =
-//        Arrays.asList(sh.movingCrossovers("2022-06-26", "2022-05-26", 2, 2));
-//    crossoversList.sort(
-//        Comparator.comparing(m -> m.keySet().iterator().next()));
-// Sort the list based on the keys
+    //    List<Map<String, Integer>> crossoversList =
+    //        Arrays.asList(sh.movingCrossovers("2022-06-26", "2022-05-26", 2, 2));
+    //    crossoversList.sort(
+    //        Comparator.comparing(m -> m.keySet().iterator().next()));
+    //    Sort the list based on the keys
 
-
-// This process takes a lot of time to execute so I am using the same data,
-// but if you replace it with the actual functionality it will also pass,
-// but it takes some time
+    //    This process takes a lot of time to execute so I am using the same data,
+    //    but if you replace it with the actual functionality it
+    //    will also pass, but it takes some time
     assertEquals(expectedCrossovers, expectedCrossovers);
     //    assertEquals(12, sh.movingCrossovers("2022-06-26", "2022-03-26", 2, 2));
 

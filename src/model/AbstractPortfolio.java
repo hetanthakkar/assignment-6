@@ -172,7 +172,7 @@ abstract class AbstractPortfolio implements PortfolioModel {
    *
    * @return the cost basis value of the portfolio
    */
-  protected double getCostBasisValue(){
+  protected double getCostBasisValue() {
     double cost = 0;
     for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
       for (ShareModel groupOfSameShares : entry.getValue()) {

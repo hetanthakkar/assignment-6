@@ -14,13 +14,17 @@ import view.AccountView;
  * and implements the executeCommand() method to fulfill
  * the contract of the TextCommandExecutor interface.
  */
-class CreateTextCommandExecutor extends AbstractTextCommandExecutor{
+class CreateTextCommandExecutor extends AbstractTextCommandExecutor {
 
-  /** The type of portfolio to be created. */
-  private String portType;
+  /**
+   * The type of portfolio to be created.
+   */
+  private final String portType;
 
-  /** An array containing parts of the input command. */
-  private String[] partOfInput;
+  /**
+   * An array containing parts of the input command.
+   */
+  private final String[] partOfInput;
 
   /**
    * Constructs a CreateTextCommandExecutor with the specified model, view,
@@ -32,7 +36,7 @@ class CreateTextCommandExecutor extends AbstractTextCommandExecutor{
    * @param restOfCommand the remaining part of the command containing share information
    */
   CreateTextCommandExecutor(AccountModel model, AccountView view, String portType,
-                            String restOfCommand){
+                            String restOfCommand) {
     super(model, view);
     this.portType = portType;
     partOfInput = restOfCommand.split(" ");

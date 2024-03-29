@@ -19,7 +19,8 @@ class GetCostTextCommandExecutor extends AbstractTextCommandExecutor {
   private String portName;
 
   /**
-   * Constructs a GetCostTextCommandExecutor with the specified model, view, and rest of the command.
+   * Constructs a GetCostTextCommandExecutor with the specified model, view,
+   * and rest of the command.
    *
    * @param model         the model representing the account
    * @param view          the view representing the account

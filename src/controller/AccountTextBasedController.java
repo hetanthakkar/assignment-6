@@ -80,7 +80,7 @@ public class AccountTextBasedController implements AccountController {
           textCommandExecutor = new SaveTextCommandExecutor(model, view, restOfCommand);
           break;
         case ("load"):
-          textCommandExecutor = new LoadCommandCommandExecutor(model, view, restOfCommand);
+          textCommandExecutor = new LoadCommandExecutor(model, view, restOfCommand);
           break;
         default:
           view.displayMessage("Invalid command.");

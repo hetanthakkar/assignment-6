@@ -51,14 +51,12 @@ class PurchaseShares extends Share {
   }
 
   @Override
-  public void setQuantity(int newQuantity)
-  {
+  public void setQuantity(int newQuantity) {
     updateCostWhenSettingQuanitity(newQuantity);
     this.quantity = newQuantity;
   }
 
-  private void updateCostWhenSettingQuanitity(int newQuantity)
-  {
+  private void updateCostWhenSettingQuanitity(int newQuantity) {
     this.cost = this.cost / this.quantity * newQuantity;
   }
 }

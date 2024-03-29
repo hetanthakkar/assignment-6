@@ -40,7 +40,7 @@ public interface PortfolioModel {
    *
    * @param date The date for which to retrieve the cost basis of the portfolio.
    * @return A string representation of the cost basis of the portfolio on the
-   * specified date.
+   *     specified date.
    */
   String getCostBasis(String date);
 
