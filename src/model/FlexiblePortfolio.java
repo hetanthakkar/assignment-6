@@ -16,7 +16,7 @@ import java.util.TreeMap;
  */
 class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioModel {
 
-  private final Map<String, Double> costBasisMap;
+//  private final Map<String, Double> costBasisMap;
 
   /**
    * Constructs a new FlexiblePortfolio object with the specified builder.
@@ -25,19 +25,17 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
    */
   FlexiblePortfolio(PortfolioBuilder portfolioBuilder) {
     super(portfolioBuilder);
-    this.costBasisMap = new TreeMap<String, Double>();
-    this.updateCostMap();
   }
 
 
   @Override
-  public void buyShare(String tickerSymbol, int quantity) throws Exception {
+  public void buyShare(String tickerSymbol, int quantity, String date) throws Exception {
     ShareModel newShare;
     if (this.shares.containsKey(tickerSymbol)) {
-      newShare = this.returnShareWithSameDate(tickerSymbol, LocalDate.now().toString());
+      newShare = this.returnShareWithSameDate(tickerSymbol, date);
       if (newShare == null) {
         try {
-          newShare = new PurchaseShares(tickerSymbol, quantity);
+          newShare = new PurchaseShares(tickerSymbol, quantity, date);
         } catch (Exception e) {
           throw e;
         }
@@ -47,7 +45,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
       }
     } else {
       try {
-        newShare = new PurchaseShares(tickerSymbol, quantity);
+        newShare = new PurchaseShares(tickerSymbol, quantity, date);
       } catch (Exception e) {
         throw e;
       }
@@ -55,21 +53,19 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
       listOfShares.add(newShare);
       this.shares.put(tickerSymbol, listOfShares);
     }
-    this.updateCostMap();
   }
 
 
   @Override
-  public void sellShare(String share, int quantity) throws Exception {
+  public void sellShare(String share, int quantity, String date) throws Exception {
     if (!this.shares.containsKey(share)) {
       throw new Exception("Cannot sell stock that is not in the portfolio.");
     }
-    if (!this.enoughSharesToSell(quantity, this.getTotalQuantityOfSpecificShare(share))) {
+    if (!this.enoughSharesToSell(quantity, this.getTotalQuantityOfSpecificShareAtDate(share, date))) {
       throw new Exception(String.format("Not enough shares of %s to sell.", share));
     } else {
-      this.removeSharesFromPortfolio(share, quantity);
+      this.removeSharesFromPortfolio(share, quantity, date);
     }
-    this.updateCostMap();
   }
 
   @Override
@@ -96,27 +92,39 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
   }
 
   protected double getPortfolioValue(String date) throws Exception {
-    if (this.isBeforeCreationDate(date)) {
-      return 0.0;
+    double totalValue = 0;
+    for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
+      for (ShareModel groupOfSameShares : entry.getValue()) {
+        try {
+          if (isBeforeCreationDate(groupOfSameShares.getDate(), date)){
+            totalValue += 0.0;
+          }
+          else {
+            totalValue += groupOfSameShares.getValueAtDate(date);
+          }
+        } catch (Exception e) {
+          throw e;
+        }
+
+      }
     }
-    if (date.equals(this.creationDate)) {
-      return getCostAtDate(date);
-    }
-    return super.getPortfolioValue(date);
+    return totalValue;
   }
 
-  private boolean isBeforeCreationDate(String date) {
+  private boolean isBeforeCreationDate(String dateOfShare, String dateOfGiven) {
     DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    LocalDate givenDate = LocalDate.parse(date, inputFormatter);
-    LocalDate createdDate = LocalDate.parse(this.creationDate, inputFormatter);
-    return givenDate.isBefore(createdDate);
+    LocalDate givenDate = LocalDate.parse(dateOfGiven, inputFormatter);
+    LocalDate shareDate = LocalDate.parse(dateOfShare, inputFormatter);
+    return givenDate.isBefore(shareDate);
   }
 
-  private int getTotalQuantityOfSpecificShare(String tickerSymbol) {
+  private int getTotalQuantityOfSpecificShareAtDate(String tickerSymbol, String date) {
     int quantity = 0;
     if (this.shares.containsKey(tickerSymbol)) {
       for (ShareModel s : this.shares.get(tickerSymbol)) {
-        quantity = quantity + s.getQuantity();
+        if (s.getDate().equals(date)){
+          quantity = s.getQuantity();
+        }
       }
     }
     return quantity;
@@ -126,21 +134,23 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return actualAmount - desiredSellAmount >= 0;
   }
 
-  private void removeSharesFromPortfolio(String share, int desiredSellQuantity) {
-    int listIndexer = 0;
-    while (desiredSellQuantity > 0) {
-      if (this.shares.get(share).get(listIndexer).getQuantity() > desiredSellQuantity) {
-        int endQuantity = this.shares.get(share).get(listIndexer).
-                getQuantity() - desiredSellQuantity;
-        this.shares.get(share).get(listIndexer).setQuantity(endQuantity);
-        desiredSellQuantity = 0;
-      } else {
-        desiredSellQuantity = desiredSellQuantity - this.shares.get(share).
-                get(listIndexer).getQuantity();
-        this.shares.get(share).remove(listIndexer);
-        if (this.shares.get(share).isEmpty()) {
+  private void removeSharesFromPortfolio(String share, int desiredSellQuantity, String date) {
+    ShareModel soldShare = null;
+    for (ShareModel s : this.shares.get(share)){
+      if (s.getDate().equals(date)){
+        soldShare = s;
+      }
+    }
+    if (soldShare != null){
+      int resultShares = soldShare.getQuantity() - desiredSellQuantity;
+      if (resultShares == 0){
+        this.shares.get(share).remove(soldShare);
+        if (this.shares.get(share).isEmpty()){
           this.shares.remove(share);
         }
+      }
+      else{
+        soldShare.setQuantity(resultShares);
       }
     }
   }
@@ -161,14 +171,19 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return share.getDate().equals(desiredDate);
   }
 
-  private void updateCostMap() {
-    double todayCost = this.getCostBasisValue();
-    this.costBasisMap.put(LocalDate.now().toString(), new Double(todayCost));
-  }
-
   protected double getCostAtDate(String date) {
-    Map.Entry<String, Double> entry = ((TreeMap) this.costBasisMap).floorEntry(date);
-    return entry != null ? entry.getValue() : 0.0;
+    double totalCost = 0;
+    for (Map.Entry<String, List<ShareModel>> entry : this.shares.entrySet()) {
+      for (ShareModel groupOfSameShares : entry.getValue()) {
+        try {
+          totalCost += groupOfSameShares.getCostAtDate(date);
+        } catch (Exception e) {
+          throw e;
+        }
+
+      }
+    }
+    return totalCost;
   }
 
   /**

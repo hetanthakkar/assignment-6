@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Assignment5:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Javadocs for all model package">
+    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/BuyTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BuyTextCommandExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/HelpTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HelpTextCommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SellTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SellTextCommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Share.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ShareModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ShareModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +60,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/model/FlexiblePortfolio.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -56,6 +79,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AccountModelTest.buyStrategyFlexible.executor": "Run",
     "JUnit.AccountModelTest.executor": "Run",
     "JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible.executor": "Run",
     "JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageInflexible.executor": "Run",
@@ -67,6 +91,7 @@
     "JUnit.InflexiblePortfolioTest.executor": "Run",
     "JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor": "Run",
     "JUnit.ShareTest.executor": "Run",
+    "JUnit.ShareTest.getValueAtDate.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -77,16 +102,23 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "git-widget-placeholder": "finalBranch",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/alexl/Documents/CS5010/Assignment5/out/artifacts/Assignment5_jar",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/out/artifacts/Assignment5_jar" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -99,12 +131,12 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShareTest.getValueAtDate">
-    <configuration name="AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AccountModelTest.buyStrategyFlexible">
+    <configuration name="AccountModelTest.buyStrategyFlexible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AccountModelTest" />
-      <option name="METHOD_NAME" value="getPortfolioValueFutureDateGetErrorMessageFlexible" />
+      <option name="METHOD_NAME" value="buyStrategyFlexible" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,7 +160,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlexiblePortfolioTest.getAcceptSellTickerNotHere" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlexiblePortfolioTest.getAcceptSell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <extension name="coverage">
         <pattern>
@@ -138,7 +170,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.FlexiblePortfolioTest" />
-      <option name="METHOD_NAME" value="getAcceptSellTickerNotHere" />
+      <option name="METHOD_NAME" value="getAcceptSell" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -162,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ShareTest.getValueAtDate" />
+        <item itemvalue="JUnit.AccountModelTest.buyStrategyFlexible" />
         <item itemvalue="JUnit.All in Assignment5" />
+        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSell" />
+        <item itemvalue="JUnit.ShareTest.getValueAtDate" />
         <item itemvalue="JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageInflexible" />
-        <item itemvalue="JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" />
-        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere" />
       </list>
     </recent_temporary>
   </component>
@@ -188,6 +220,8 @@
       <workItem from="1711242234153" duration="5000" />
       <workItem from="1711426764608" duration="6959000" />
       <workItem from="1711481303479" duration="4607000" />
+      <workItem from="1711740506010" duration="289000" />
+      <workItem from="1712092560450" duration="10089000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed buy method, implemented cost-basis and value at date for portfolio">
       <option name="closed" value="true" />
@@ -237,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711665086805</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Styling">
+      <option name="closed" value="true" />
+      <created>1711673397949</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711673397949</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +292,8 @@
     <MESSAGE value="Implemented Command Design Pattern" />
     <MESSAGE value="Javadocs for all controller package" />
     <MESSAGE value="Javadocs for all model package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadocs for all model package" />
+    <MESSAGE value="Styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Styling" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

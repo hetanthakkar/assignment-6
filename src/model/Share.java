@@ -14,7 +14,7 @@ class Share implements ShareModel {
   final String tickerSymbol;
 
   /** The date of the share. */
-  final String date;
+  String date;
 
   /** The CsvFileIOInterface for CSV file operations. */
   private final CsvFileIOInterface csvFileIO;
@@ -52,6 +52,11 @@ class Share implements ShareModel {
   @Override
   public double getCost() {
     return this.cost;
+  }
+
+  @Override
+  public double getCostAtDate(String date){
+    return 0.0;
   }
 
   @Override

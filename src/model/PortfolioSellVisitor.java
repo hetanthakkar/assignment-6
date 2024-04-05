@@ -5,6 +5,8 @@ class PortfolioSellVisitor implements PortfolioVisitorModel {
   private String tickerSymbol;
   private int quantity;
 
+  private String date;
+
   /**
    * Constructs a new PortfolioSellVisitor with the specified ticker symbol
    * and quantity of shares to sell.
@@ -12,9 +14,10 @@ class PortfolioSellVisitor implements PortfolioVisitorModel {
    * @param tickerSymbol The ticker symbol of the shares to sell.
    * @param quantity     The quantity of shares to sell.
    */
-  public PortfolioSellVisitor(String tickerSymbol, int quantity) {
+  public PortfolioSellVisitor(String tickerSymbol, int quantity, String date) {
     this.tickerSymbol = tickerSymbol;
     this.quantity = quantity;
+    this.date = date;
   }
 
   /**
@@ -25,7 +28,7 @@ class PortfolioSellVisitor implements PortfolioVisitorModel {
    */
   @Override
   public void visit(FlexiblePortfolioModel portfolio) throws Exception {
-    portfolio.sellShare(this.tickerSymbol, this.quantity);
+    portfolio.sellShare(this.tickerSymbol, this.quantity, this.date);
   }
 
   /**

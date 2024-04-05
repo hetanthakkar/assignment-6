@@ -1,6 +1,9 @@
 package model;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * The PurchaseShares class represents shares purchased by a user. It includes
  * information
@@ -30,8 +33,28 @@ class PurchaseShares extends Share {
     this.cost = this.getCurrentValue();
   }
 
+  PurchaseShares(String tickerSymbol, int quantity, String date) throws Exception {
+    super(tickerSymbol);
+    this.date = date;
+    this.quantity = quantity;
+    this.cost = this.getValueAtDate(date) * quantity;
+  }
+
+
+
   @Override
   public double getCost() {
+    return this.cost;
+  }
+
+  @Override
+  public double getCostAtDate(String date){
+    DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate givenDate = LocalDate.parse(date, inputFormatter);
+    LocalDate createdDate = LocalDate.parse(this.date, inputFormatter);
+    if(givenDate.isBefore(createdDate)){
+      return 0.0;
+    }
     return this.cost;
   }
 

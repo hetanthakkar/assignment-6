@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 /**
  * An interface that defines the behavior of an account that holds multiple portfolios.
  * It provides methods for managing portfolios, including adding shares,
@@ -75,7 +77,7 @@ public interface AccountModel {
    * @param quantity      Quantity of shares to buy
    * @throws Exception when buying shares is not possible
    */
-  void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
+  void buyShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception;
 
   /**
    * Sells shares from a portfolio.
@@ -85,7 +87,7 @@ public interface AccountModel {
    * @param quantity      Quantity of shares to sell
    * @throws Exception when selling shares is not possible
    */
-  void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception;
+  void sellShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception;
 
   /**
    * Returns the cost basis of a portfolio on a given date.
@@ -98,5 +100,7 @@ public interface AccountModel {
   String getCostBasis(String portfolioName, String date) throws Exception;
 
   String loadModel(String portfolioName) throws Exception;
+
+  void buyStrategy(String portName, double investAmount, Map<String,Double> sharePercentage) throws Exception;
 
 }

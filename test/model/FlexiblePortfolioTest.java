@@ -100,14 +100,15 @@ public class FlexiblePortfolioTest extends AbstractPortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
     int quantity1 = 1;
+    String date = "2024-01-15";
     testPortfolio =
             new FlexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioBuyVisitor("AAPL", 5);
+    PortfolioVisitorModel p1 = new PortfolioBuyVisitor("AAPL", 5, date);
     testPortfolio.accept(p1);
-    PortfolioVisitorModel p2 = new PortfolioBuyVisitor("MSFT", 5);
+    PortfolioVisitorModel p2 = new PortfolioBuyVisitor("MSFT", 5, date);
     testPortfolio.accept(p2);
     String expectedOutput = testPortfolioName + "\n |--- ( MSFT, 5) \n |--- ( AAPL, 6) \n";
     assertEquals(expectedOutput, testPortfolio.getPortfolioComposition());
@@ -118,12 +119,13 @@ public class FlexiblePortfolioTest extends AbstractPortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
     int quantity1 = 5;
+    String date = LocalDate.now().toString();
     testPortfolio =
             new FlexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 5);
+    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 5, date);
     testPortfolio.accept(p1);
     String expectedOutput = testPortfolioName + "\n";
     assertEquals(expectedOutput, testPortfolio.getPortfolioComposition());
@@ -160,12 +162,13 @@ public class FlexiblePortfolioTest extends AbstractPortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "MSFT";
     int quantity1 = 5;
+    String date = "2024-01-15";
     testPortfolio =
             new FlexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 5);
+    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 5, date);
     testPortfolio.accept(p1);
   }
 
@@ -174,12 +177,13 @@ public class FlexiblePortfolioTest extends AbstractPortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
     int quantity1 = 5;
+    String date = "2024-01-15";
     testPortfolio =
             new FlexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 6);
+    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 6, date);
     testPortfolio.accept(p1);
   }
 }

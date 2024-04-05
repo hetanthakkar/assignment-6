@@ -16,6 +16,8 @@ public interface ShareModel {
    */
   double getCost();
 
+  double getCostAtDate(String date);
+
   /**
    * Retrieves the current value of the share.
    *

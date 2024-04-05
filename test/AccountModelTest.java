@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.Account;
 import model.AccountModel;
@@ -74,22 +76,24 @@ public class AccountModelTest {
   public void buyShareInflexible() throws Exception {
     String portName = "BuyShareInflexible";
     String testShare = "MSFT";
+    String date = "2024-01-15";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "inflexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.buyShare(portName, testShare, testQuantity);
+    newAccount.buyShare(portName, testShare, testQuantity, date);
   }
 
   @Test(expected = Exception.class)
   public void sellShareInflexible() throws Exception {
     String portName = "SellShareInflexible";
     String testShare = "MSFT";
+    String date = "2024-01-15";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "inflexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity);
+    newAccount.sellShare(portName, testShare, testQuantity, date);
   }
 
   // ----------
@@ -182,11 +186,12 @@ public class AccountModelTest {
   public void buyShareFlexible() throws Exception {
     String portName = "BuyShareFlexible";
     String testShare = "MSFT";
+    String date = "2024-01-15";
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.buyShare(portName, testShare, testQuantity);
+    newAccount.buyShare(portName, testShare, testQuantity, date);
     String expectedOutput = "BuyShareFlexible\n |--- ( MSFT, 2) \n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("BuyShareFlexible"));
   }
@@ -195,11 +200,12 @@ public class AccountModelTest {
   public void sellShareFlexible() throws Exception {
     String portName = "SellShareFlexible";
     String testShare = "MSFT";
+    String date = LocalDate.now().toString();
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity);
+    newAccount.sellShare(portName, testShare, testQuantity, date);
     String expectedOutput = "SellShareFlexible\n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("SellShareFlexible"));
   }
@@ -208,11 +214,12 @@ public class AccountModelTest {
   public void sellShareFlexibleErrorNotEnough() throws Exception {
     String portName = "SellShareFlexible1";
     String testShare = "MSFT";
+    String date = LocalDate.now().toString();
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare, testQuantity + 1);
+    newAccount.sellShare(portName, testShare, testQuantity + 1, date);
   }
 
   @Test(expected = Exception.class)
@@ -220,10 +227,30 @@ public class AccountModelTest {
     String portName = "SellShareFlexible2";
     String testShare = "MSFT";
     String testShare2 = "AAPL";
+    String date = LocalDate.now().toString();
     int testQuantity = 1;
     newAccount.setPortfolioName(portName, "flexible");
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
-    newAccount.sellShare(portName, testShare2, testQuantity);
+    newAccount.sellShare(portName, testShare2, testQuantity, date);
+  }
+
+  @Test
+  public void buyStrategyFlexible() throws Exception {
+    String portName = "BuyStrategyFlexible";
+    String testShare = "MSFT";
+    String testShare2 = "AAPL";
+    String date = LocalDate.now().toString();
+    int testQuantity = 1;
+    newAccount.setPortfolioName(portName, "flexible");
+    newAccount.addShare(testShare, testQuantity);
+    newAccount.addShare(testShare2, testQuantity);
+    newAccount.finishBuild();
+    System.out.println(newAccount.getPortfolioComposition(portName));
+    Map<String, Double> shares = new HashMap<String, Double>();
+    shares.put("MSFT", 75.0);
+    shares.put("AAPL", 25.0);
+    newAccount.buyStrategy(portName, 10000, shares);
+    System.out.println(newAccount.getPortfolioComposition(portName));
   }
 }

@@ -16,7 +16,7 @@ public interface FlexiblePortfolioModel extends PortfolioModel {
    * @throws Exception if an error occurs while buying shares.
    */
 
-  void buyShare(String share, int quantity) throws Exception;
+  void buyShare(String share, int quantity, String date) throws Exception;
 
   /**
    * Sells shares from the portfolio.
@@ -26,7 +26,7 @@ public interface FlexiblePortfolioModel extends PortfolioModel {
    * @throws Exception if an error occurs while selling shares.
    */
 
-  void sellShare(String share, int quantity) throws Exception;
+  void sellShare(String share, int quantity, String date) throws Exception;
 
 }
 

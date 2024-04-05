@@ -36,14 +36,15 @@ class BuyTextCommandExecutor extends AbstractTextCommandExecutor {
    */
   @Override
   public void executeCommand() {
-    if (partOfInput.length <= 1) {
+    if (partOfInput.length <= 2) {
       view.displayMessage("Cannot buy nothing.");
     }
     String portfolioName = partOfInput[0];
+    String date = partOfInput[1];
     try {
       List<ParsedShares> listNewShares = this.parseCreatePortfolioAndShare();
       for (ParsedShares i : listNewShares) {
-        model.buyShare(portfolioName, i.getTickerSymbol(), i.getQuantity());
+        model.buyShare(portfolioName, i.getTickerSymbol(), i.getQuantity(), date);
         view.displayMessage(String.format("Successfully bought %d-%s in %s", i.getQuantity(),
                 i.getTickerSymbol(), portfolioName));
       }
@@ -60,7 +61,7 @@ class BuyTextCommandExecutor extends AbstractTextCommandExecutor {
    */
   protected List<ParsedShares> parseCreatePortfolioAndShare() {
     List<ParsedShares> shares = new ArrayList<ParsedShares>();
-    for (int i = 1; i < this.partOfInput.length; i++) {
+    for (int i = 2; i < this.partOfInput.length; i++) {
       String shareInput = partOfInput[i];
       if (shareInput.startsWith("(") && shareInput.endsWith(")")) {
         String[] shareInfo = shareInput.substring(1, shareInput.length() - 1).split("-");

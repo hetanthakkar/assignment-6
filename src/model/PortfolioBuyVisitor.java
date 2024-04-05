@@ -5,6 +5,8 @@ class PortfolioBuyVisitor implements PortfolioVisitorModel {
   private final String tickerSymbol;
   private final int quantity;
 
+  private final String date;
+
   /**
    * Constructs a new PortfolioBuyVisitor with the specified ticker symbol
    * and quantity of shares to buy.
@@ -12,9 +14,10 @@ class PortfolioBuyVisitor implements PortfolioVisitorModel {
    * @param tickerSymbol The ticker symbol of the shares to buy.
    * @param quantity     The quantity of shares to buy.
    */
-  public PortfolioBuyVisitor(String tickerSymbol, int quantity) {
+  public PortfolioBuyVisitor(String tickerSymbol, int quantity, String date) {
     this.tickerSymbol = tickerSymbol;
     this.quantity = quantity;
+    this.date = date;
   }
 
   /**
@@ -25,7 +28,7 @@ class PortfolioBuyVisitor implements PortfolioVisitorModel {
    */
   @Override
   public void visit(FlexiblePortfolioModel portfolio) throws Exception {
-    portfolio.buyShare(this.tickerSymbol, this.quantity);
+    portfolio.buyShare(this.tickerSymbol, this.quantity, this.date);
   }
 
   /**

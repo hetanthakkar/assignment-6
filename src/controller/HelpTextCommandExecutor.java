@@ -58,11 +58,26 @@ class HelpTextCommandExecutor extends AbstractTextCommandExecutor {
    * An enum representing different commands along with their descriptions and examples.
    */
   private enum Command {
+
+    BUY(new String[]{"buy",
+            "Buy specified share on specified date. Only for flexible portfolios.",
+            "buy [Portfolio Name] [date] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
+    SELL(new String[]{"sell",
+            "Sell specified share on specified date. Only for flexible portfolios.",
+            "sell [Portfolio Name] [date] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
     CREATE(new String[]{"create",
-        "Creating a new portfolio with shares in it.",
+        "Creating a new inflexible portfolio with shares in it.",
         "create [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
+    CREATEINFLEXIBLE(new String[]{"create-inflexible",
+            "Creating a new inflexible portfolio with shares in it.",
+            "create-inflexible [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
+    CREATEFLEXIBLE(new String[]{"create-flexible",
+            "Creating a new flexible portfolio with shares in it.",
+            "create-flexible [Portfolio Name] ([TickerSymbol]-[quantity]) ([TickerSymbol]-[quantity])..."}),
     LIST(new String[]{"list", "Listing all portfolios.", ""}),
     SHOW(new String[]{"show", "Show composition of portfolio.", "show [Portfolio Name]"}),
+    GETCOST(new String[]{"get-cost", "Get cost basis of portfolio on certain date.",
+            "get-cost [Portfolio Name] [yyyy-mm-dd]"}),
     GETVALUE(new String[]{"getvalue", "Get total value of portfolio on certain date.",
         "getvalue [Portfolio Name] [yyyy-mm-dd]"}),
     HELP(new String[]{"help", "Listing all available commands and their examples.", ""}),

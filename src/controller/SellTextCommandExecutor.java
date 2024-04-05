@@ -42,10 +42,11 @@ class SellTextCommandExecutor extends AbstractTextCommandExecutor {
       view.displayMessage("Cannot sell nothing.");
     }
     String portfolioName = partOfInput[0];
+    String date = partOfInput[1];
     try {
       List<ParsedShares> listNewShares = this.parseCreatePortfolioAndShare();
       for (ParsedShares i : listNewShares) {
-        model.sellShare(portfolioName, i.getTickerSymbol(), i.getQuantity());
+        model.sellShare(portfolioName, i.getTickerSymbol(), i.getQuantity(), date);
         view.displayMessage(String.format("Successfully sold %d-%s in %s", i.getQuantity(),
                 i.getTickerSymbol(), portfolioName));
       }
@@ -62,7 +63,7 @@ class SellTextCommandExecutor extends AbstractTextCommandExecutor {
    */
   protected List<ParsedShares> parseCreatePortfolioAndShare() {
     List<ParsedShares> shares = new ArrayList<ParsedShares>();
-    for (int i = 1; i < this.partOfInput.length; i++) {
+    for (int i = 2; i < this.partOfInput.length; i++) {
       String shareInput = partOfInput[i];
       if (shareInput.startsWith("(") && shareInput.endsWith(")")) {
         String[] shareInfo = shareInput.substring(1, shareInput.length() - 1).split("-");

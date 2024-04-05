@@ -76,13 +76,14 @@ public class InflexiblePortfolioTest extends AbstractPortfolioTest {
   public void getAcceptBuy() throws Exception {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
+    String date = "2024-01-15";
     int quantity1 = 1;
     testPortfolio =
             new InflexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioBuyVisitor("AAPL", 5);
+    PortfolioVisitorModel p1 = new PortfolioBuyVisitor("AAPL", 5, date);
     testPortfolio.accept(p1);
   }
 
@@ -91,12 +92,13 @@ public class InflexiblePortfolioTest extends AbstractPortfolioTest {
     String testPortfolioName = "Hello";
     String testShare1 = "AAPL";
     int quantity1 = 5;
+    String date = "2024-01-15";
     testPortfolio =
             new InflexiblePortfolioBuilder()
                     .createPortfolio(testPortfolioName)
                     .addShares(testShare1, quantity1)
                     .build();
-    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 3);
+    PortfolioVisitorModel p1 = new PortfolioSellVisitor("AAPL", 3, date);
     testPortfolio.accept(p1);
   }
 

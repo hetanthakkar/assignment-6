@@ -1,3 +1,5 @@
+import java.util.Map;
+
 import model.AccountModel;
 
 /**
@@ -114,7 +116,8 @@ public class MockModel implements AccountModel {
    * @throws Exception If an error occurs while buying the share.
    */
   @Override
-  public void buyShare(String portfolioName, String tickerSymbol, int quantity) throws Exception {
+  public void buyShare(String portfolioName, String tickerSymbol, int quantity, String date)
+          throws Exception {
     // No implementation provided
   }
 
@@ -127,7 +130,8 @@ public class MockModel implements AccountModel {
    * @throws Exception If an error occurs while selling the share.
    */
   @Override
-  public void sellShare(String portfolioName, String tickerSymbol, int quantity) throws Exception {
+  public void sellShare(String portfolioName, String tickerSymbol, int quantity, String date)
+          throws Exception {
     // No implementation provided
   }
 
@@ -154,5 +158,10 @@ public class MockModel implements AccountModel {
   @Override
   public String loadModel(String portfolioName) throws Exception {
     return null;
+  }
+
+  @Override
+  public void buyStrategy(String portName, double investAmount, Map<String, Double> sharePercentage) throws Exception {
+
   }
 }
