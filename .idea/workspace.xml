@@ -9,25 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Styling">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BuyTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BuyTextCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HelpTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HelpTextCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SellTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SellTextCommandExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Share.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ShareModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ShareModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/FlexiblePortfolioTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/InflexiblePortfolioTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Fixed buy and sell, implemented strategy buy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,44 +57,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.AccountModelTest.buyStrategyFlexible.executor": "Run",
-    "JUnit.AccountModelTest.executor": "Run",
-    "JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible.executor": "Run",
-    "JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageInflexible.executor": "Run",
-    "JUnit.AccountTextBasedControllerTest.executor": "Run",
-    "JUnit.All in Assignment5.executor": "Run",
-    "JUnit.FlexiblePortfolioTest.executor": "Run",
-    "JUnit.FlexiblePortfolioTest.getAcceptSell.executor": "Run",
-    "JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere.executor": "Run",
-    "JUnit.InflexiblePortfolioTest.executor": "Run",
-    "JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor": "Run",
-    "JUnit.ShareTest.executor": "Run",
-    "JUnit.ShareTest.getValueAtDate.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "git-widget-placeholder": "finalBranch",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/alexl/Documents/CS5010/Assignment5/out/artifacts/Assignment5_jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.AccountModelTest.buyStrategyFlexible.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AccountModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageInflexible.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AccountTextBasedControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in Assignment5.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlexiblePortfolioTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlexiblePortfolioTest.getAcceptSell.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InflexiblePortfolioTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ShareTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ShareTest.getValueAtDate.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;finalBranch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/alexl/Documents/CS5010/Assignment5/out/artifacts/Assignment5_jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="controller" />
@@ -293,7 +275,8 @@
     <MESSAGE value="Javadocs for all controller package" />
     <MESSAGE value="Javadocs for all model package" />
     <MESSAGE value="Styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Styling" />
+    <MESSAGE value="Fixed buy and sell, implemented strategy buy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed buy and sell, implemented strategy buy" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
