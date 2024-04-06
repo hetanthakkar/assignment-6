@@ -80,8 +80,8 @@ abstract class AbstractPortfolio implements PortfolioModel {
    * @param listOfShares the list of shares
    * @return the total quantity of shares
    */
-  private int getTotalQuantityOfShare(List<ShareModel> listOfShares) {
-    int quantity = 0;
+  private double getTotalQuantityOfShare(List<ShareModel> listOfShares) {
+    double quantity = 0;
     for (ShareModel groupOfSameShares : listOfShares) {
       quantity += groupOfSameShares.getQuantity();
     }

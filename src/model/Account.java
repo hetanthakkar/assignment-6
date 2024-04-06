@@ -87,7 +87,7 @@ public class Account implements AccountModel {
   }
 
   @Override
-  public void buyShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception {
+  public void buyShare(String portfolioName, String tickerSymbol, double quantity, String date) throws Exception {
     if (!this.accountPortfolios.containsKey(portfolioName)) {
       throw new IllegalArgumentException("Portfolio does not exist.");
     }
@@ -101,7 +101,7 @@ public class Account implements AccountModel {
   }
 
   @Override
-  public void sellShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception {
+  public void sellShare(String portfolioName, String tickerSymbol, double quantity, String date) throws Exception {
     if (!this.accountPortfolios.containsKey(portfolioName)) {
       throw new IllegalArgumentException("Portfolio does not exist.");
     }
@@ -161,7 +161,7 @@ public class Account implements AccountModel {
         try {
           share = new Share(entry.getKey());
           double numOfShare = (investAmount * entry.getValue() / 100.0) / share.getCurrentValue();
-          this.buyShare(portName, entry.getKey(), (int) numOfShare, LocalDate.now().toString());
+          this.buyShare(portName, entry.getKey(), numOfShare, LocalDate.now().toString());
         }
         catch (Exception e){
           throw e;

@@ -148,13 +148,12 @@ class Share implements ShareModel {
   }
 
   @Override
-  public int getQuantity() {
+  public double getQuantity() {
     return 1;
   }
 
   @Override
-  public void setQuantity(int endQuantity) {
+  public void setQuantity(double endQuantity) {
     endQuantity = 0;
-
   }
 }

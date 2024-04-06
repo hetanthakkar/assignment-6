@@ -33,7 +33,7 @@ public class AccountModelTest {
     newAccount.addShare("AAPL", 5);
     newAccount.addShare("GOOG", 5);
     newAccount.finishBuild();
-    String expectedOutput = "HelloInflexible\n |--- ( GOOG, 5) \n |--- ( AAPL, 5) \n";
+    String expectedOutput = "HelloInflexible\n |--- ( GOOG, 5.0) \n |--- ( AAPL, 5.0) \n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("HelloInflexible"));
   }
 
@@ -113,7 +113,7 @@ public class AccountModelTest {
     newAccount.addShare("AAPL", 5);
     newAccount.addShare("GOOG", 5);
     newAccount.finishBuild();
-    String expectedOutput = "Helloflexible\n |--- ( GOOG, 5) \n |--- ( AAPL, 5) \n";
+    String expectedOutput = "Helloflexible\n |--- ( GOOG, 5.0) \n |--- ( AAPL, 5.0) \n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("Helloflexible"));
   }
 
@@ -192,7 +192,7 @@ public class AccountModelTest {
     newAccount.addShare(testShare, testQuantity);
     newAccount.finishBuild();
     newAccount.buyShare(portName, testShare, testQuantity, date);
-    String expectedOutput = "BuyShareFlexible\n |--- ( MSFT, 2) \n";
+    String expectedOutput = "BuyShareFlexible\n |--- ( MSFT, 2.0) \n";
     assertEquals(expectedOutput, newAccount.getPortfolioComposition("BuyShareFlexible"));
   }
 

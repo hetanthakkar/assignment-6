@@ -3,7 +3,7 @@ package model;
 class PortfolioSellVisitor implements PortfolioVisitorModel {
 
   private String tickerSymbol;
-  private int quantity;
+  private double quantity;
 
   private String date;
 
@@ -14,7 +14,7 @@ class PortfolioSellVisitor implements PortfolioVisitorModel {
    * @param tickerSymbol The ticker symbol of the shares to sell.
    * @param quantity     The quantity of shares to sell.
    */
-  public PortfolioSellVisitor(String tickerSymbol, int quantity, String date) {
+  public PortfolioSellVisitor(String tickerSymbol, double quantity, String date) {
     this.tickerSymbol = tickerSymbol;
     this.quantity = quantity;
     this.date = date;

@@ -77,7 +77,7 @@ public interface AccountModel {
    * @param quantity      Quantity of shares to buy
    * @throws Exception when buying shares is not possible
    */
-  void buyShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception;
+  void buyShare(String portfolioName, String tickerSymbol, double quantity, String date) throws Exception;
 
   /**
    * Sells shares from a portfolio.
@@ -87,7 +87,7 @@ public interface AccountModel {
    * @param quantity      Quantity of shares to sell
    * @throws Exception when selling shares is not possible
    */
-  void sellShare(String portfolioName, String tickerSymbol, int quantity, String date) throws Exception;
+  void sellShare(String portfolioName, String tickerSymbol, double quantity, String date) throws Exception;
 
   /**
    * Returns the cost basis of a portfolio on a given date.

@@ -116,7 +116,7 @@ public class MockModel implements AccountModel {
    * @throws Exception If an error occurs while buying the share.
    */
   @Override
-  public void buyShare(String portfolioName, String tickerSymbol, int quantity, String date)
+  public void buyShare(String portfolioName, String tickerSymbol, double quantity, String date)
           throws Exception {
     // No implementation provided
   }
@@ -130,7 +130,7 @@ public class MockModel implements AccountModel {
    * @throws Exception If an error occurs while selling the share.
    */
   @Override
-  public void sellShare(String portfolioName, String tickerSymbol, int quantity, String date)
+  public void sellShare(String portfolioName, String tickerSymbol, double quantity, String date)
           throws Exception {
     // No implementation provided
   }

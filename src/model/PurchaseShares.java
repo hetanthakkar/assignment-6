@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 
 class PurchaseShares extends Share {
 
-  private int quantity;
+  private double quantity;
 
 
   /**
@@ -27,13 +27,13 @@ class PurchaseShares extends Share {
    * @throws Exception if an error occurs while constructing the PurchaseShares
    *                   object.
    */
-  PurchaseShares(String tickerSymbol, int quantity) throws Exception {
+  PurchaseShares(String tickerSymbol, double quantity) throws Exception {
     super(tickerSymbol);
     this.quantity = quantity;
     this.cost = this.getCurrentValue();
   }
 
-  PurchaseShares(String tickerSymbol, int quantity, String date) throws Exception {
+  PurchaseShares(String tickerSymbol, double quantity, String date) throws Exception {
     super(tickerSymbol);
     this.date = date;
     this.quantity = quantity;
@@ -64,7 +64,7 @@ class PurchaseShares extends Share {
   }
 
   @Override
-  public int getQuantity() {
+  public double getQuantity() {
     return this.quantity;
   }
 
@@ -74,12 +74,12 @@ class PurchaseShares extends Share {
   }
 
   @Override
-  public void setQuantity(int newQuantity) {
+  public void setQuantity(double newQuantity) {
     updateCostWhenSettingQuanitity(newQuantity);
     this.quantity = newQuantity;
   }
 
-  private void updateCostWhenSettingQuanitity(int newQuantity) {
+  private void updateCostWhenSettingQuanitity(double newQuantity) {
     this.cost = this.cost / this.quantity * newQuantity;
   }
 }

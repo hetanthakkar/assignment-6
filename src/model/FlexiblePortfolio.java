@@ -29,7 +29,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
 
 
   @Override
-  public void buyShare(String tickerSymbol, int quantity, String date) throws Exception {
+  public void buyShare(String tickerSymbol, double quantity, String date) throws Exception {
     ShareModel newShare;
     if (this.shares.containsKey(tickerSymbol)) {
       newShare = this.returnShareWithSameDate(tickerSymbol, date);
@@ -57,7 +57,7 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
 
 
   @Override
-  public void sellShare(String share, int quantity, String date) throws Exception {
+  public void sellShare(String share, double quantity, String date) throws Exception {
     if (!this.shares.containsKey(share)) {
       throw new Exception("Cannot sell stock that is not in the portfolio.");
     }
@@ -118,8 +118,8 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return givenDate.isBefore(shareDate);
   }
 
-  private int getTotalQuantityOfSpecificShareAtDate(String tickerSymbol, String date) {
-    int quantity = 0;
+  private double getTotalQuantityOfSpecificShareAtDate(String tickerSymbol, String date) {
+    double quantity = 0.0;
     if (this.shares.containsKey(tickerSymbol)) {
       for (ShareModel s : this.shares.get(tickerSymbol)) {
         if (s.getDate().equals(date)){
@@ -130,11 +130,11 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
     return quantity;
   }
 
-  private boolean enoughSharesToSell(int desiredSellAmount, int actualAmount) {
+  private boolean enoughSharesToSell(double desiredSellAmount, double actualAmount) {
     return actualAmount - desiredSellAmount >= 0;
   }
 
-  private void removeSharesFromPortfolio(String share, int desiredSellQuantity, String date) {
+  private void removeSharesFromPortfolio(String share, double desiredSellQuantity, String date) {
     ShareModel soldShare = null;
     for (ShareModel s : this.shares.get(share)){
       if (s.getDate().equals(date)){
@@ -142,8 +142,8 @@ class FlexiblePortfolio extends AbstractPortfolio implements FlexiblePortfolioMo
       }
     }
     if (soldShare != null){
-      int resultShares = soldShare.getQuantity() - desiredSellQuantity;
-      if (resultShares == 0){
+      double resultShares = soldShare.getQuantity() - desiredSellQuantity;
+      if (resultShares == 0.0){
         this.shares.get(share).remove(soldShare);
         if (this.shares.get(share).isEmpty()){
           this.shares.remove(share);

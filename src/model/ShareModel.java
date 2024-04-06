@@ -55,13 +55,13 @@ public interface ShareModel {
    *
    * @return The quantity of shares.
    */
-  int getQuantity();
+  double getQuantity();
 
   /**
    * Sets the quantity of shares.
    *
    * @param endQuantity The new quantity of shares.
    */
-  void setQuantity(int endQuantity);
+  void setQuantity(double endQuantity);
 }
 
