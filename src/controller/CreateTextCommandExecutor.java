@@ -64,8 +64,10 @@ class CreateTextCommandExecutor extends AbstractTextCommandExecutor {
       }
       model.finishBuild();
       view.displayMessage(String.format("Successfully created %s", portfolioName));
+
     } catch (Exception e) {
       view.displayMessage(e.getMessage() + String.format(". %s was not created.", portfolioName));
+
     }
   }
 

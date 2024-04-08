@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * The AbstractPortfolio class is an abstract class that implements the PortfolioModel interface.
- * It provides common functionality for portfolio objects.
+ * The AbstractPortfolio class is an abstract class that implements the PortfolioModel interface. It
+ * provides common functionality for portfolio objects.
  */
 abstract class AbstractPortfolio implements PortfolioModel {
 
@@ -107,7 +107,6 @@ abstract class AbstractPortfolio implements PortfolioModel {
         } catch (Exception e) {
           throw e;
         }
-
       }
     }
     return totalValue;
@@ -137,6 +136,13 @@ abstract class AbstractPortfolio implements PortfolioModel {
         newEntry[4] =
             String.valueOf(groupOfSameShares.getCurrentValue() * groupOfSameShares.getQuantity());
         newEntry[5] = String.valueOf(groupOfSameShares.getCost() * groupOfSameShares.getQuantity());
+
+        // last fetched  (04/08/2024)
+        // end Date (04/08/2029)
+        // duration (30 days)
+        // if end date>last fetched date:
+        // run a loop from last fetched date for every 30 days:
+        // and till current date add that share to this portfolio
       }
       csvFileIO.storeData(newEntry);
     }
@@ -237,4 +243,3 @@ abstract class AbstractPortfolio implements PortfolioModel {
     return chart.toString();
   }
 }
-

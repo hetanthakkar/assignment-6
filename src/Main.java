@@ -4,6 +4,7 @@ import model.Account;
 import model.AccountModel;
 import view.AccountTextBasedView;
 import view.AccountView;
+import view.CreatePortfolioView;
 
 /**
  * The Main class is the entry point for the Financial Portfolio Management
@@ -19,7 +20,7 @@ public class Main {
    */
   public static void main(String[] args) throws Exception {
     AccountModel model = new Account();
-    AccountView view = new AccountTextBasedView();
+    AccountView view = new CreatePortfolioView();
     AccountController controller = new AccountTextBasedController();
     controller.startController(model, view);
   }

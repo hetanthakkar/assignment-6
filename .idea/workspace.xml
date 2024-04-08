@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3dea6ad-183d-470a-8de7-5b46611ebc26" name="Changes" comment="Javadocs for all controller package">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jcalendar_1_2_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AccountTextBasedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CreateTextCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CreateTextCommandExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AbstractPortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AccountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AccountModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlexiblePortfolioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioBuyVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PortfolioSellVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PurchaseShares.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PurchaseShares.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Share.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ShareModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ShareModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AccountModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AccountModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MockModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AccountTextBasedView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AccountTextBasedView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AccountView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AccountView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +60,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.CreatePortfolioView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DashboardView.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.AccountModelTest.executor&quot;: &quot;Run&quot;,
@@ -86,10 +84,14 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hetanthakkar/Assignment5&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -108,7 +110,40 @@
       <recent name="model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.CreatePortfolioView">
+    <configuration name="CreatePortfolioView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.CreatePortfolioView" />
+      <module name="Assignment5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.DashboardView" />
+      <module name="Assignment5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Assignment5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
@@ -127,68 +162,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlexiblePortfolioTest.getAcceptSell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.FlexiblePortfolioTest" />
-      <option name="METHOD_NAME" value="getAcceptSell" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlexiblePortfolioTest.getAcceptSellTickerNotHere" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.FlexiblePortfolioTest" />
-      <option name="METHOD_NAME" value="getAcceptSellTickerNotHere" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.InflexiblePortfolioTest" />
-      <option name="METHOD_NAME" value="getAcceptBuyFlexiblePortfolio" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CreatePortfolioView" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DashboardView" />
         <item itemvalue="JUnit.All in Assignment5" />
         <item itemvalue="JUnit.AccountModelTest.getPortfolioValueFutureDateGetErrorMessageFlexible" />
-        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSellTickerNotHere" />
-        <item itemvalue="JUnit.FlexiblePortfolioTest.getAcceptSell" />
-        <item itemvalue="JUnit.InflexiblePortfolioTest.getAcceptBuyFlexiblePortfolio" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-e2c057a1" />
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-396cc1b2" />
       </set>
     </attachedChunks>
   </component>
@@ -203,6 +190,8 @@
       <workItem from="1711242234153" duration="5000" />
       <workItem from="1711426764608" duration="6959000" />
       <workItem from="1711481303479" duration="4607000" />
+      <workItem from="1712450311442" duration="12099000" />
+      <workItem from="1712598616727" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed buy method, implemented cost-basis and value at date for portfolio">
       <option name="closed" value="true" />

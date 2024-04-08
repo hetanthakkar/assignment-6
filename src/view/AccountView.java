@@ -16,4 +16,6 @@ public interface AccountView {
    * @param message The message to be displayed.
    */
   void displayMessage(String message);
+  StringBuilder getCommand();
+  StringBuilder getRestOfCommand();
 }

@@ -15,4 +15,14 @@ public class AccountTextBasedView implements AccountView {
     System.out.println(message);
   }
 
+  @Override
+  public StringBuilder getCommand() {
+    return null;
+  }
+
+  @Override
+  public StringBuilder getRestOfCommand() {
+    return null;
+  }
+
 }
